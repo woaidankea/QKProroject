@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+            <meta name="viewport" content="width=320, user-scalable=no">
+                <!-- <meta name="apple-mobile-web-app-capable" content="yes"> -->
+                <meta name="apple-mobile-web-app-status-bar-style" content="black">
+                    <base href="/index.html"/>
+                    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+                    href="http://assets.qkcdn.com/images/fb587e0b3265d37f6ebd69772d304171.png"/>
+                    
+                    
+                    
+                    <link href="http://qkcdn.com/assets/splash_cube.9758e36a.css" rel="stylesheet"/>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <title>钱咖</title>
+    </head>
+    <body ng-cloak>
+        
+        
+        <img style="display:none; width:0; height:0;"
+            src='http://c.cnzz.com/wapstat.php?siteid=1253533097&r=&rnd=1060511125'
+            width="0" height="0">
+            
+            
+            
+            
+            
+            
+            <div class="splash-spinner" ng-if="!loaded">
+            <div class="cube cube1"></div>
+            <div class="cube cube2"></div>
+            <div class="cube cube3"></div>
+            <div class="cube cube4"></div>
+            <div class="cube cube5"></div>
+            <div class="cube cube6"></div>
+            <div class="cube cube7"></div>
+            <div class="cube cube8"></div>
+            <div class="cube cube9"></div>
+            </div>
+            
+            
+            
+            
+            
+            <!-- Application Context Configuration -->
+            <qk-app-context
+            data-qk-endpoint="http://127.0.0.1:12345"
+            data-ws-endpoint="http://qianka.com"
+            data-assets-cdn="http://assets.qkcdn.com/images"
+            data-qk-scheme="comsbkapp"
+            data-default-route="/welcome"
+            data-no-key-available="0"
+            data-qk-version="6e9323d">
+            </qk-app-context>
+            
+            <!-- Application Root View -->
+            <ion-nav-view ng-if="loaded" id="app-root">
+            </ion-nav-view>
+            
+            <!-- Qianka APP -->
+            <script>
+            var __KEY__ = 'qk:app:diadem_info';
+            var elements = document.getElementsByTagName('qk-app-context');
+            var attrs = elements[0].attributes;
+            var diadem_version = attrs['data-qk-version'].value;
+            if (localStorage) {
+            var local_info_str = localStorage.getItem(__KEY__);
+            if (!local_info_str) {
+            localStorage.setItem(__KEY__, JSON.stringify({
+            version: diadem_version,
+            timestamp: new Date().getTime()
+            }));
+            } else {
+            var local_info = JSON.parse(local_info_str);
+            if (diadem_version != local_info.version) {
+            localStorage.setItem(__KEY__, JSON.stringify({
+            version: diadem_version,
+            timestamp: new Date().getTime()
+            }));
+            location.reload();
+            }
+            }
+            }
+            </script>
+            <script data-main="http://qkcdn.com/diadem/js/qk-1.0.0-dev-6e9323d.js"
+            src="http://qkcdn.com/diadem/lib/require/1.0.1/require.min.js"></script>
+            </body>
+            </html>

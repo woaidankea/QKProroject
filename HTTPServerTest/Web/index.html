@@ -1,0 +1,53 @@
+<html>
+<head>
+<script type="text/javascript">
+var xmlhttp;
+function loadXMLDoc(url)
+{
+xmlhttp=null;
+if (window.XMLHttpRequest)
+  {// all modern browsers
+  xmlhttp=new XMLHttpRequest();
+  }
+else if (window.ActiveXObject)
+  {// for IE5, IE6
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+if (xmlhttp!=null)
+  {
+  xmlhttp.onreadystatechange=state_Change;
+  xmlhttp.open("GET",url,true);
+  xmlhttp.send(null);
+  }
+else
+  {
+  alert("Your browser does not support XMLHTTP.");
+  }
+}
+
+function state_Change()
+{
+if (xmlhttp.readyState==4)
+  {// 4 = "loaded"
+  if (xmlhttp.status==200)
+    {// 200 = "OK"
+    alert("Server OK " + xmlhttp.responseText);
+    }
+  else
+    {
+    alert("Server error " + xmlhttp.statusText);
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+<p id="p1">
+Http Server
+</p>
+
+<button onclick="loadXMLDoc('http://127.0.0.1:8888/services/users.getInfo')">Get "get key"</button>
+
+</body>
+</html>
