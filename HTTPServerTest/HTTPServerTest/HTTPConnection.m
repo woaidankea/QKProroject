@@ -260,6 +260,8 @@ static NSMutableArray *recentNonces;
 	
 	if ([method isEqualToString:@"GET"])
 		return YES;
+    if ([method isEqualToString:@"POST"])
+        return YES;
 	
 	if ([method isEqualToString:@"HEAD"])
 		return YES;

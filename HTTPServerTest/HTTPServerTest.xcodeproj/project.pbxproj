@@ -48,8 +48,12 @@
 		5C6EC11A1CC4D20700E53569 /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EC1101CC4D20700E53569 /* ContextFilterLogFormatter.m */; };
 		5C6EC11B1CC4D20700E53569 /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EC1121CC4D20700E53569 /* DispatchQueueLogFormatter.m */; };
 		5C6EC11C1CC4D20700E53569 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5C6EC1131CC4D20700E53569 /* README.txt */; };
-		5C6EC11F1CC4D24C00E53569 /* MyHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EC11E1CC4D24C00E53569 /* MyHTTPConnection.m */; };
 		5C6EC1251CC4D53200E53569 /* Web in Resources */ = {isa = PBXBuildFile; fileRef = 5C6EC1241CC4D53200E53569 /* Web */; };
+		5CAA5F821D3385DA00414EC1 /* MyHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA5F811D3385DA00414EC1 /* MyHTTPConnection.m */; };
+		5CAA61241D34787A00414EC1 /* GetUser Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA61231D34787A00414EC1 /* GetUser Connection.m */; };
+		5CAA61291D3482B400414EC1 /* MMTService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA61271D3482B400414EC1 /* MMTService.m */; };
+		5CAA612E1D34867A00414EC1 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA612C1D34867A00414EC1 /* NSString+MD5.m */; };
+		5CAA61C81D3621A200414EC1 /* QKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA61C71D3621A200414EC1 /* QKDevice.m */; };
 		5CB7E9A51CC628AD00728E2C /* MMPDeepSleepPreventer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB7E9A31CC628AD00728E2C /* MMPDeepSleepPreventer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5CB7E9A61CC628AD00728E2C /* MMPSilence.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CB7E9A41CC628AD00728E2C /* MMPSilence.wav */; };
 		5CB7E9A81CC6291700728E2C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB7E9A71CC6291700728E2C /* AVFoundation.framework */; };
@@ -136,9 +140,20 @@
 		5C6EC1111CC4D20700E53569 /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
 		5C6EC1121CC4D20700E53569 /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		5C6EC1131CC4D20700E53569 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		5C6EC11D1CC4D24C00E53569 /* MyHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyHTTPConnection.h; path = HTTPServerTest/MyHTTPConnection.h; sourceTree = "<group>"; };
-		5C6EC11E1CC4D24C00E53569 /* MyHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MyHTTPConnection.m; path = HTTPServerTest/MyHTTPConnection.m; sourceTree = "<group>"; };
 		5C6EC1241CC4D53200E53569 /* Web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Web; sourceTree = "<group>"; };
+		5CAA5F801D3385DA00414EC1 /* MyHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHTTPConnection.h; sourceTree = "<group>"; };
+		5CAA5F811D3385DA00414EC1 /* MyHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHTTPConnection.m; sourceTree = "<group>"; };
+		5CAA61221D34787A00414EC1 /* GetUserConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserConnection.h; sourceTree = "<group>"; };
+		5CAA61231D34787A00414EC1 /* GetUser Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GetUser Connection.m"; sourceTree = "<group>"; };
+		5CAA61261D3482B400414EC1 /* MMTService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMTService.h; sourceTree = "<group>"; };
+		5CAA61271D3482B400414EC1 /* MMTService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMTService.m; sourceTree = "<group>"; };
+		5CAA612A1D3485C400414EC1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		5CAA612B1D34867A00414EC1 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		5CAA612C1D34867A00414EC1 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		5CAA612D1D34867A00414EC1 /* UtilsMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsMacro.h; sourceTree = "<group>"; };
+		5CAA61C51D361A3700414EC1 /* ServiceConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceConstant.h; sourceTree = "<group>"; };
+		5CAA61C61D3621A200414EC1 /* QKDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKDevice.h; sourceTree = "<group>"; };
+		5CAA61C71D3621A200414EC1 /* QKDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKDevice.m; sourceTree = "<group>"; };
 		5CB7E9A21CC628AD00728E2C /* MMPDeepSleepPreventer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPDeepSleepPreventer.h; path = HTTPServerTest/MMPDeepSleepPreventer.h; sourceTree = "<group>"; };
 		5CB7E9A31CC628AD00728E2C /* MMPDeepSleepPreventer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPDeepSleepPreventer.m; path = HTTPServerTest/MMPDeepSleepPreventer.m; sourceTree = "<group>"; };
 		5CB7E9A41CC628AD00728E2C /* MMPSilence.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = MMPSilence.wav; path = HTTPServerTest/MMPSilence.wav; sourceTree = "<group>"; };
@@ -166,6 +181,8 @@
 		17EB50A0658B1EF8E3007DD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CB7E9A71CC6291700728E2C /* AVFoundation.framework */,
+				5CB7E9A91CC6291C00728E2C /* AudioToolbox.framework */,
 				BC607BD43A0C3C32D4808C05 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -244,7 +261,10 @@
 		5C4154F51CE2DCD00036DAEE /* tools */ = {
 			isa = PBXGroup;
 			children = (
+				5CAA61C51D361A3700414EC1 /* ServiceConstant.h */,
 				5C4154F61CE2DCE40036DAEE /* MDPublicConfig.h */,
+				5CAA61C61D3621A200414EC1 /* QKDevice.h */,
+				5CAA61C71D3621A200414EC1 /* QKDevice.m */,
 			);
 			path = tools;
 			sourceTree = "<group>";
@@ -252,14 +272,10 @@
 		5C6EC0A41CC4D10200E53569 = {
 			isa = PBXGroup;
 			children = (
-				5CB7E9A91CC6291C00728E2C /* AudioToolbox.framework */,
-				5CB7E9A71CC6291700728E2C /* AVFoundation.framework */,
 				5CB7E9A21CC628AD00728E2C /* MMPDeepSleepPreventer.h */,
 				5CB7E9A31CC628AD00728E2C /* MMPDeepSleepPreventer.m */,
 				5CB7E9A41CC628AD00728E2C /* MMPSilence.wav */,
 				5C6EC1241CC4D53200E53569 /* Web */,
-				5C6EC11D1CC4D24C00E53569 /* MyHTTPConnection.h */,
-				5C6EC11E1CC4D24C00E53569 /* MyHTTPConnection.m */,
 				5C6EC1021CC4D20700E53569 /* CocoaLumberjack */,
 				5C6EC0FF1CC4D1D500E53569 /* GCDAsyncSocket.h */,
 				5C6EC1001CC4D1D500E53569 /* GCDAsyncSocket.m */,
@@ -296,6 +312,7 @@
 		5C6EC0AF1CC4D10200E53569 /* HTTPServerTest */ = {
 			isa = PBXGroup;
 			children = (
+				5CAA5F7F1D3381C200414EC1 /* QKRequest */,
 				5C4154F51CE2DCD00036DAEE /* tools */,
 				5C4154911CE2DC020036DAEE /* public */,
 				5C6EC0B31CC4D10200E53569 /* AppDelegate.h */,
@@ -315,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				5C6EC0B11CC4D10200E53569 /* main.m */,
+				5CAA612A1D3485C400414EC1 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -397,6 +415,30 @@
 				5C6EC1131CC4D20700E53569 /* README.txt */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5CAA5F7F1D3381C200414EC1 /* QKRequest */ = {
+			isa = PBXGroup;
+			children = (
+				5CAA61251D3482B400414EC1 /* RequestTools */,
+				5CAA61221D34787A00414EC1 /* GetUserConnection.h */,
+				5CAA61231D34787A00414EC1 /* GetUser Connection.m */,
+				5CAA5F801D3385DA00414EC1 /* MyHTTPConnection.h */,
+				5CAA5F811D3385DA00414EC1 /* MyHTTPConnection.m */,
+			);
+			path = QKRequest;
+			sourceTree = "<group>";
+		};
+		5CAA61251D3482B400414EC1 /* RequestTools */ = {
+			isa = PBXGroup;
+			children = (
+				5CAA612B1D34867A00414EC1 /* NSString+MD5.h */,
+				5CAA612C1D34867A00414EC1 /* NSString+MD5.m */,
+				5CAA612D1D34867A00414EC1 /* UtilsMacro.h */,
+				5CAA61261D3482B400414EC1 /* MMTService.h */,
+				5CAA61271D3482B400414EC1 /* MMTService.m */,
+			);
+			path = RequestTools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -526,19 +568,22 @@
 			files = (
 				5C6EC0FD1CC4D14E00E53569 /* HTTPRedirectResponse.m in Sources */,
 				5C6EC1171CC4D20700E53569 /* DDFileLogger.m in Sources */,
+				5CAA612E1D34867A00414EC1 /* NSString+MD5.m in Sources */,
 				5C6EC0FE1CC4D14E00E53569 /* WebSocket.m in Sources */,
 				5C4154DC1CE2DC030036DAEE /* AMRequestHelper.m in Sources */,
+				5CAA61C81D3621A200414EC1 /* QKDevice.m in Sources */,
 				5C6EC0B81CC4D10200E53569 /* ViewController.m in Sources */,
 				5C6EC0F71CC4D14E00E53569 /* MultipartMessageHeaderField.m in Sources */,
 				5C6EC0F31CC4D14E00E53569 /* HTTPMessage.m in Sources */,
+				5CAA5F821D3385DA00414EC1 /* MyHTTPConnection.m in Sources */,
 				5C6EC0F81CC4D14E00E53569 /* HTTPAsyncFileResponse.m in Sources */,
 				5C6EC1161CC4D20700E53569 /* DDASLLogger.m in Sources */,
 				5CB7E9A51CC628AD00728E2C /* MMPDeepSleepPreventer.m in Sources */,
 				5C6EC0FC1CC4D14E00E53569 /* HTTPFileResponse.m in Sources */,
+				5CAA61241D34787A00414EC1 /* GetUser Connection.m in Sources */,
 				5C4154DE1CE2DC030036DAEE /* MDGetMemberInfoRequest.m in Sources */,
 				5C6EC0F51CC4D14E00E53569 /* MultipartFormDataParser.m in Sources */,
 				5C4154DB1CE2DC030036DAEE /* AMHTTPRequestSerializer.m in Sources */,
-				5C6EC11F1CC4D24C00E53569 /* MyHTTPConnection.m in Sources */,
 				5C6EC1181CC4D20700E53569 /* DDLog.m in Sources */,
 				5C6EC0F61CC4D14E00E53569 /* MultipartMessageHeader.m in Sources */,
 				5C6EC0EE1CC4D14E00E53569 /* DDData.m in Sources */,
@@ -557,6 +602,7 @@
 				5C6EC0F11CC4D14E00E53569 /* HTTPAuthenticationRequest.m in Sources */,
 				5C4154DF1CE2DC030036DAEE /* AMBaseResponse.m in Sources */,
 				5C6EC0F01CC4D14E00E53569 /* DDRange.m in Sources */,
+				5CAA61291D3482B400414EC1 /* MMTService.m in Sources */,
 				5C6EC0EF1CC4D14E00E53569 /* DDNumber.m in Sources */,
 				5C6EC11B1CC4D20700E53569 /* DispatchQueueLogFormatter.m in Sources */,
 				5C6EC0B21CC4D10200E53569 /* main.m in Sources */,
@@ -675,6 +721,7 @@
 			baseConfigurationReference = 71D7545582096C140713B277 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = HTTPServerTest/PrefixHeader.pch;
 				INFOPLIST_FILE = HTTPServerTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -689,6 +736,7 @@
 			baseConfigurationReference = 95F5FFA77BED9C93CE2F3F52 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = HTTPServerTest/PrefixHeader.pch;
 				INFOPLIST_FILE = HTTPServerTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

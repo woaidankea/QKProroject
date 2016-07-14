@@ -33,7 +33,7 @@
     // Tell the server to broadcast its presence via Bonjour.
     // This allows browsers such as Safari to automatically discover our service.
     [httpServer setType:@"_http._tcp."];
-    [httpServer setPort:8888];
+    [httpServer setPort:7777];
     [httpServer setDomain:@"127.0.0.1"];
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     // Normally there's no need to run our server on any specific port.
