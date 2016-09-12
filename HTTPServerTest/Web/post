@@ -1,2 +1,4 @@
-get success
-               
+{
+"code": 0,
+"message": "成功"
+}

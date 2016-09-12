@@ -17,9 +17,11 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_OFF; // | HTTP_LOG_FLAG_TRACE;
 	if((self = [super init]))
 	{
 		HTTPLogTrace();
-		
+		 NSLog(@"1111");
 		offset = 0;
 		data = dataParam;
+        
+         NSLog(@"22222");
 	}
 	return self;
 }

@@ -34,15 +34,15 @@
     NSString *qx_datetime = [timeString substringWithRange:NSMakeRange(0,10)];
     NSString *qx_auth = [NSString stringWithFormat:@"%@|%@",[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString],[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
     
-    [dict setObject:qx_version forKey:@"qx_version"];
-    [dict setObject:qx_scheme forKey:@"qx_scheme"];
-    [dict setObject:qx_datetime forKey:@"qx_datetime"];
-    [dict setObject:qx_auth forKey:@"qx_auth"];
+    [dict setObject:qx_version forKey:@"qxversion"];
+    [dict setObject:qx_scheme forKey:@"qxscheme"];
+    [dict setObject:qx_datetime forKey:@"qxdatetime"];
+    [dict setObject:qx_auth forKey:@"qxauth"];
     
     
     
     NSString *signatureParam = [self generateSignatureParams:dict];
-    [dict setValue:POST_VALUE(signatureParam) forKey:@"qx_sign"];
+    [dict setValue:POST_VALUE(signatureParam) forKey:@"qxsign"];
 
     
     
@@ -76,6 +76,7 @@
     }
     
     [param appendString:kTransferKey];
+    NSLog(@"MD5 = %@",param);
     NSString *signature   = [param MD5Hash];
     
     return signature;

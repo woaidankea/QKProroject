@@ -992,13 +992,14 @@ static NSMutableArray *recentNonces;
 	
 	// Respond properly to HTTP 'GET' and 'HEAD' commands
 	httpResponse = [self httpResponseForMethod:method URI:uri];
-	
+    NSLog(@"4444");
 	if (httpResponse == nil)
 	{
+            NSLog(@"55555");
 		[self handleResourceNotFound];
 		return;
 	}
-	
+	    NSLog(@"6666");
 	[self sendResponseHeadersAndBody];
 }
 
@@ -1095,7 +1096,8 @@ static NSMutableArray *recentNonces;
 	
 	NSString *contentTypeStr = [NSString stringWithFormat:@"multipart/byteranges; boundary=%@", ranges_boundry];
 	[response setHeaderField:@"Content-Type" value:contentTypeStr];
-	
+    
+  	
 	return response;
 }
 
@@ -1124,6 +1126,7 @@ static NSMutableArray *recentNonces;
 
 - (void)sendResponseHeadersAndBody
 {
+    NSLog(@"777");
 	if ([httpResponse respondsToSelector:@selector(delayResponseHeaders)])
 	{
 		if ([httpResponse delayResponseHeaders])
@@ -1131,14 +1134,14 @@ static NSMutableArray *recentNonces;
 			return;
 		}
 	}
-	
+	 NSLog(@"8888");
 	BOOL isChunked = NO;
 	
 	if ([httpResponse respondsToSelector:@selector(isChunked)])
 	{
 		isChunked = [httpResponse isChunked];
 	}
-	
+	 NSLog(@"999");
 	// If a response is "chunked", this simply means the HTTPResponse object
 	// doesn't know the content-length in advance.
 	
@@ -1165,7 +1168,7 @@ static NSMutableArray *recentNonces;
 			isRangeRequest = YES;
 		}
 	}
-	
+	 NSLog(@"1000");
 	HTTPMessage *response;
 	
 	if (!isRangeRequest)
@@ -1173,11 +1176,13 @@ static NSMutableArray *recentNonces;
 		// Create response
 		// Default status code: 200 - OK
 		NSInteger status = 200;
-		
+		 NSLog(@"123123");
 		if ([httpResponse respondsToSelector:@selector(status)])
 		{
 			status = [httpResponse status];
 		}
+        
+        NSLog(@"654");
 		response = [[HTTPMessage alloc] initResponseWithStatusCode:status description:nil version:HTTPVersion1_1];
 		
 		if (isChunked)
@@ -1189,9 +1194,12 @@ static NSMutableArray *recentNonces;
 			NSString *contentLengthStr = [NSString stringWithFormat:@"%qu", contentLength];
 			[response setHeaderField:@"Content-Length" value:contentLengthStr];
 		}
+        
+          [response setHeaderField:@"Access-Control-Allow-Origin" value:@"*"];
 	}
 	else
 	{
+        NSLog(@"aaa");
 		if ([ranges count] == 1)
 		{
 			response = [self newUniRangeResponse:contentLength];
@@ -1201,7 +1209,7 @@ static NSMutableArray *recentNonces;
 			response = [self newMultiRangeResponse:contentLength];
 		}
 	}
-	
+	    NSLog(@"bbb");
 	BOOL isZeroLengthResponse = !isChunked && (contentLength == 0);
     
 	// If they issue a 'HEAD' command, we don't have to include the file
@@ -1216,6 +1224,7 @@ static NSMutableArray *recentNonces;
 	}
 	else
 	{
+          NSLog(@"ccc");
 		// Write the header response
 		NSData *responseData = [self preprocessResponse:response];
 		[asyncSocket writeData:responseData withTimeout:TIMEOUT_WRITE_HEAD tag:HTTP_PARTIAL_RESPONSE_HEADER];
@@ -1225,15 +1234,19 @@ static NSMutableArray *recentNonces;
 		// Now we need to send the body of the response
 		if (!isRangeRequest)
 		{
+                 NSLog(@"dddd");
 			// Regular request
 			NSData *data = [httpResponse readDataOfLength:READ_CHUNKSIZE];
 			
 			if ([data length] > 0)
 			{
+                          NSLog(@"eeee");
 				[responseDataSizes addObject:[NSNumber numberWithUnsignedInteger:[data length]]];
 				
 				if (isChunked)
 				{
+                    
+                      NSLog(@"111");
 					NSData *chunkSize = [self chunkedTransferSizeLineForLength:[data length]];
 					[asyncSocket writeData:chunkSize withTimeout:TIMEOUT_WRITE_HEAD tag:HTTP_CHUNKED_RESPONSE_HEADER];
 					
@@ -1241,17 +1254,20 @@ static NSMutableArray *recentNonces;
 					
 					if ([httpResponse isDone])
 					{
+                           NSLog(@"222");
 						NSData *footer = [self chunkedTransferFooter];
 						[asyncSocket writeData:footer withTimeout:TIMEOUT_WRITE_HEAD tag:HTTP_RESPONSE];
 					}
 					else
 					{
+                          NSLog(@"3333");
 						NSData *footer = [GCDAsyncSocket CRLFData];
 						[asyncSocket writeData:footer withTimeout:TIMEOUT_WRITE_HEAD tag:HTTP_CHUNKED_RESPONSE_FOOTER];
 					}
 				}
 				else
 				{
+                       NSLog(@"4444");
 					long tag = [httpResponse isDone] ? HTTP_RESPONSE : HTTP_PARTIAL_RESPONSE_BODY;
 					[asyncSocket writeData:data withTimeout:TIMEOUT_WRITE_BODY tag:tag];
 				}
@@ -1260,7 +1276,7 @@ static NSMutableArray *recentNonces;
 		else
 		{
 			// Client specified a byte range in request
-			
+			     NSLog(@"fff");
 			if ([ranges count] == 1)
 			{
 				// Client is requesting a single range
@@ -1284,7 +1300,7 @@ static NSMutableArray *recentNonces;
 			{
 				// Client is requesting multiple ranges
 				// We have to send each range using multipart/byteranges
-				
+				   NSLog(@"ggg");
 				// Write range header
 				NSData *rangeHeaderData = [ranges_headers objectAtIndex:0];
 				[asyncSocket writeData:rangeHeaderData withTimeout:TIMEOUT_WRITE_HEAD tag:HTTP_PARTIAL_RESPONSE_HEADER];
@@ -1300,6 +1316,7 @@ static NSMutableArray *recentNonces;
 				
 				if ([data length] > 0)
 				{
+                      NSLog(@"hhh");
 					[responseDataSizes addObject:[NSNumber numberWithUnsignedInteger:[data length]]];
 					
 					[asyncSocket writeData:data withTimeout:TIMEOUT_WRITE_BODY tag:HTTP_PARTIAL_RANGES_RESPONSE_BODY];
