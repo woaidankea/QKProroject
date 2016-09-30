@@ -13,7 +13,7 @@
 //#define kServerUrl  @"http://192.168.1.4"
 
 //#define kQXServerUrl            @"http://192.168.1.6"
-#define kQXServerUrl            @"http://test.yunwangluo.com"
+#define kQXServerUrl            @"https://api.jieku.com/ios"
 
 #define kGetUser                @"/User/GetUser"
 #define kSystemConfig           @"/System/SetConfig"
@@ -36,11 +36,14 @@
 #define kCashApplyPhone          @"/Cash/CashApplyPhone"           //手机充值
 #define kGiveupTask            @"/Task/GiveUpTask"          //放弃任务
 #define kCopyString            @"/keyServices/copy.string"          //复制关键词
+#define kAutoBack               @"/keyServices/autoback"    //自动返回主页
 #define kChengji                @"/Income/ChengJi"
 
 #define kQhCode                @"/Switch/QhGetCode"   //切换验证码
 #define kswitchUser             @"/Switch/switchuser"    //切换用户
 
+#define kAppInfo             @"/keyServices/app.getInfo"    //判断是否安装应用
+#define kAppOpen             @"/keyServices/app.openApp"    //判断是否安装应用
 
 
 

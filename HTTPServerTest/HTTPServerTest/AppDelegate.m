@@ -75,87 +75,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-     NSURL *url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
-    NSString*text = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSArray *array = [text componentsSeparatedByString:@"&"];
-    // 显示数据
-    NSLog(@"%@", array);
-    [self StartServer];
-   
-//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"分享成功"
-//                                                        message:launchOptions.description
-//                                                       delegate:self
-//                                              cancelButtonTitle:@"确定"
-//                                              otherButtonTitles:nil];
-//    [alertView show];
-    
-
-//    Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
-//    NSObject * workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
-//    BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:@"com.apple.mobilesafari"];
-    
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"com.gw.iphone.shiba://"]];
-//    if([[[[array objectAtIndex:0]componentsSeparatedByString:@"="] objectAtIndex:1] isEqualToString:@"openmoneyshow"]){
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[[[array objectAtIndex:1] componentsSeparatedByString:@"="] objectAtIndex:1]]];
-//    }
-    
     
      _mm = [[MMPDeepSleepPreventer alloc]init];
     [self setShareSDK];
     
     
     
-    if([[[[array objectAtIndex:0]componentsSeparatedByString:@"="] objectAtIndex:1] isEqualToString:@"openmoneyshow"]){
-        
-        
-        
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        
-//        
-//        
-//        ViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-//      
-//        UINavigationController *mainContrl =  [[UINavigationController alloc] initWithRootViewController:loginVC];
-//        [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
-//        [mainContrl.navigationBar setTintColor:[UIColor whiteColor]];
-//        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-//        [self.window setRootViewController:mainContrl];
-
-        Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
-        NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
-        
-        BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:@"com.apple.mobilesafari"];
-        
-        
-        
-        
-        
-        
-        
-    }
     
     
     
     
-    if([[[[array objectAtIndex:0]componentsSeparatedByString:@"="] objectAtIndex:1] isEqualToString:@"shareurl"]){
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MDInterestingArticleViewController" bundle:nil];
-        
-        ShareModel *model =[[ShareModel alloc]init];
-        model.url = [[[array objectAtIndex:1] componentsSeparatedByString:@"="] objectAtIndex:1];
-        
-        
-        MDInterestDetailViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"MDInterestDetailViewController"];
-        loginVC.model = model;
-        UINavigationController *mainContrl =  [[UINavigationController alloc] initWithRootViewController:loginVC];
-        [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
-        [mainContrl.navigationBar setTintColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-        [self.window setRootViewController:mainContrl];
-        //        mainContrl.navigationBar.translucent = NO;
-        
-        
-    }
+  
 
     
     // Override point for customization after application launch.
@@ -177,6 +107,16 @@
 //    [httpServer start:&error];
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    
+//    
+//    
+//            ViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+//
+//    
+//    [self.window setRootViewController:loginVC];
+
+    
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -289,10 +229,13 @@
 //        [mainContrl.navigationBar setTintColor:[UIColor whiteColor]];
 //        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 //        [self.window setRootViewController:mainContrl];
-        Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
-        NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
+        //Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
+       // NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
         
-        BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:@"com.apple.mobilesafari"];
+      //  BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:@"com.apple.mobilesafari"];
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"load" object:nil];
+        
+
     }
 
     
@@ -305,7 +248,8 @@
         ShareModel *model =[[ShareModel alloc]init];
         model.url = [[[array objectAtIndex:1] componentsSeparatedByString:@"url="] objectAtIndex:1];
         model.weburl = [[[array objectAtIndex:2] componentsSeparatedByString:@"weburl="] objectAtIndex:1];
-        
+    
+
         MDInterestDetailViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"MDInterestDetailViewController"];
           loginVC.model = model;
         UINavigationController *mainContrl =  [[UINavigationController alloc] initWithRootViewController:loginVC];
@@ -313,12 +257,12 @@
         [mainContrl.navigationBar setTintColor:[UIColor whiteColor]];
         [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
         
-        //        mainContrl.navigationBar.translucent = NO;
+                mainContrl.navigationBar.translucent = NO;
         [self.window.rootViewController presentViewController:mainContrl animated:NO completion:nil];
         
         
 //        [self.window setRootViewController:mainContrl];
-        [self setShareSDK];
+      //  [self setShareSDK];
     }
     
     return YES;

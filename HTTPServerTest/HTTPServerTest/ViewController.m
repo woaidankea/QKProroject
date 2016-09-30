@@ -16,11 +16,13 @@
 #import "DDTTYLogger.h"
 #import "MMPDeepSleepPreventer.h"
 #import "QXTools.h"
+#include <objc/runtime.h>
 #define FORMATEString(Method)    ([[NSString stringWithFormat:@"%@",Method] isKindOfClass:[NSNull class]] || [[NSString stringWithFormat:@"%@",Method] isEqualToString:@"<null>"] || [[NSString stringWithFormat:@"%@",Method] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@",Method]
 @interface ViewController (){
 HTTPServer *httpServer;
 }
 @property (nonatomic,strong)MMPDeepSleepPreventer *mm;
+@property (nonatomic,assign)BOOL isLoad;
 @end
 
 @implementation ViewController
@@ -34,6 +36,13 @@ HTTPServer *httpServer;
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
    
+    if(_isLoad){
+        Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
+        NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
+        
+        BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:@"com.apple.mobilesafari"];
+
+    }
     
   
 
@@ -95,14 +104,17 @@ HTTPServer *httpServer;
     
     }
 }
-
+- (void)TimeStart {
+    _isLoad = YES;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     _webview.scrollView.scrollEnabled = NO;
     
      [self setConfig];
-    
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(TimeStart) name:@"load" object:nil];
   
     //    if([QXTools isJailBreak]){
     //        NSLog(@"设备越狱");
@@ -110,8 +122,7 @@ HTTPServer *httpServer;
     //    }
     
     
-    
-    
+       
     // Do any additional setup after loading the view, typically from a nib.
 }
 

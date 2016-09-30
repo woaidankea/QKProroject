@@ -5,7 +5,7 @@
 #import "HTTPLogging.h"
 #import "MDGetDomain.h"
 #import <AFNetworking.h>
-
+#include <objc/runtime.h>
 #import <AFHTTPRequestOperationManager+Synchronous.h>
 // Log levels : off, error, warn, info, verbose
 // Other flags: trace
@@ -17,7 +17,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 **/
 
 @implementation MyHTTPConnection
-
+BOOL APCheckIfAppInstalled(NSString *bundleIdentifier);
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path
 {
 	HTTPLogTrace();
@@ -853,6 +853,133 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
         return [[HTTPDataResponse alloc] initWithData:reponse];
     }
     
+    if ([method isEqualToString:@"GET"] && [[HttpTools separatedUrl:path] isEqualToString:kAppOpen])
+    {
+        HTTPLogVerbose(@"%@[%p]: postContentLength: %qu", THIS_FILE, self, requestContentLength);
+        
+        NSString *postStr = nil;
+        
+        NSData *postData = [request body];
+        if (postData)
+        {
+            postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+        }
+        HTTPLogVerbose(@"%@[%p]: postStr: %@", THIS_FILE, self, postStr);
+        
+        
+        NSString *keyword = [HttpTools getValueWithPath:path andKey:@"bundle_id"];
+        
+        
+        
+        
+        
+        
+        Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
+        NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
+        
+        BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:keyword];
+            NSLog(@"App installed: %@", keyword);
+        if(isopen){
+        NSData *reponse = [@"{\"code\": 0}" dataUsingEncoding:NSASCIIStringEncoding];
+        return [[HTTPDataResponse alloc] initWithData:reponse];
+        }else{
+            NSData *reponse = [@"{\"code\": 1}" dataUsingEncoding:NSASCIIStringEncoding];
+            return [[HTTPDataResponse alloc] initWithData:reponse];
+
+        }
+     
+        
+        
+    }
+    
+  
+
+    if ([method isEqualToString:@"GET"] && [[HttpTools separatedUrl:path] isEqualToString:kAppInfo])
+    {
+        HTTPLogVerbose(@"%@[%p]: postContentLength: %qu", THIS_FILE, self, requestContentLength);
+        
+        NSString *postStr = nil;
+        
+        NSData *postData = [request body];
+        if (postData)
+        {
+            postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+        }
+        HTTPLogVerbose(@"%@[%p]: postStr: %@", THIS_FILE, self, postStr);
+        
+        
+        NSString *keyword = [HttpTools getValueWithPath:path andKey:@"bundle_id"];
+        
+        
+        
+        
+        
+        
+        Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
+        SEL selector=NSSelectorFromString(@"defaultWorkspace");
+       
+        NSObject* workspace = [LSApplicationWorkspace_class performSelector:selector];
+        
+        SEL selectorALL = NSSelectorFromString(@"allApplications");
+           NSLog(@"apps: %@", [workspace performSelector:selectorALL]);
+        Class LSApplicationProxy_class = object_getClass(@"LSApplicationProxy");
+        for(LSApplicationProxy_class  in [workspace performSelector:selectorALL]){
+            NSString *bundle_id = [LSApplicationProxy_class performSelector:NSSelectorFromString(@"applicationIdentifier")];
+            
+            if([bundle_id isEqualToString:keyword]){
+                NSData *reponse = [@"{\"code\": 0}" dataUsingEncoding:NSASCIIStringEncoding];
+                return [[HTTPDataResponse alloc] initWithData:reponse];
+            }
+            
+        }
+        
+        NSData *reponse = [@"{\"code\": 1}" dataUsingEncoding:NSASCIIStringEncoding];
+        return [[HTTPDataResponse alloc] initWithData:reponse];
+      
+        
+        if (APCheckIfAppInstalled(keyword)){
+            NSLog(@"App installed: %@", keyword);
+            NSData *reponse = [@"{\"code\": 0}" dataUsingEncoding:NSASCIIStringEncoding];
+            return [[HTTPDataResponse alloc] initWithData:reponse];
+        }
+        else{
+               NSLog(@"App not installed: %@", keyword);
+            NSData *reponse = [@"{\"code\": 1}" dataUsingEncoding:NSASCIIStringEncoding];
+            return [[HTTPDataResponse alloc] initWithData:reponse];
+        }
+        
+        
+      
+    }
+
+    if ([method isEqualToString:@"GET"] && [[HttpTools separatedUrl:path] isEqualToString:kAutoBack])
+    {
+        HTTPLogVerbose(@"%@[%p]: postContentLength: %qu", THIS_FILE, self, requestContentLength);
+        
+        NSString *postStr = nil;
+        
+        NSData *postData = [request body];
+        if (postData)
+        {
+            postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+        }
+        HTTPLogVerbose(@"%@[%p]: postStr: %@", THIS_FILE, self, postStr);
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer =  [[AFJSONResponseSerializer alloc] init];
+        
+        NSString *keyword = [HttpTools getValueWithPath:path andKey:@"url"];
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:keyword]];
+        
+        
+    //    NSLog(@"keyWord = %@",[keyword stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
+      //  UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+       // pasteboard.string = [keyword stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSData *reponse = [@"{\"code\": 0}" dataUsingEncoding:NSASCIIStringEncoding];
+        return [[HTTPDataResponse alloc] initWithData:reponse];
+    }
+
+    
 
     
     if ([method isEqualToString:@"GET"] && [[HttpTools separatedUrl:path] isEqualToString:kGetHeader])
@@ -1043,5 +1170,49 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN; // | HTTP_LOG_FLAG_TRACE;
 		HTTPLogError(@"%@[%p]: %@ - Couldn't append bytes!", THIS_FILE, self, THIS_METHOD);
 	}
 }
+// Declaration
+ // Bundle identifier (eg. com.apple.mobilesafari) used to track apps
 
+// Implementation
+
+BOOL APCheckIfAppInstalled(NSString *bundleIdentifier)
+{
+    static NSString *const cacheFileName = @"com.apple.mobile.installation.plist";
+    NSString *relativeCachePath = [[@"Library" stringByAppendingPathComponent: @"Caches"] stringByAppendingPathComponent: cacheFileName];
+    NSDictionary *cacheDict = nil;
+    NSString *path = nil;
+    // Loop through all possible paths the cache could be in
+    for (short i = 0; 1; i++)
+    {
+        
+        switch (i) {
+            case 0: // Jailbroken apps will find the cache here; their home directory is /var/mobile
+                path = [NSHomeDirectory() stringByAppendingPathComponent: relativeCachePath];
+                break;
+            case 1: // App Store apps and Simulator will find the cache here; home (/var/mobile/) is 2 directories above sandbox folder
+                path = [[NSHomeDirectory() stringByAppendingPathComponent: @"../.."] stringByAppendingPathComponent: relativeCachePath];
+                break;
+            case 2: // If the app is anywhere else, default to hardcoded /var/mobile/
+                path = [@"/var/mobile" stringByAppendingPathComponent: relativeCachePath];
+                break;
+            default: // Cache not found (loop not broken)
+                return NO;
+            break; }
+        
+        BOOL isDir = NO;
+        if ([[NSFileManager defaultManager] fileExistsAtPath: path isDirectory: &isDir] && !isDir) // Ensure that file exists
+            cacheDict = [NSDictionary dictionaryWithContentsOfFile: path];
+        
+        if (cacheDict) // If cache is loaded, then break the loop. If the loop is not "broken," it will return NO later (default: case)
+            break;
+    }
+    
+    NSDictionary *system = [cacheDict objectForKey: @"System"]; // First check all system (jailbroken) apps
+    if ([system objectForKey: bundleIdentifier]) return YES;
+    NSDictionary *user = [cacheDict objectForKey: @"User"]; // Then all the user (App Store /var/mobile/Applications) apps
+    if ([user objectForKey: bundleIdentifier]) return YES;
+    
+    // If nothing returned YES already, we'll return NO now
+    return NO;
+}
 @end

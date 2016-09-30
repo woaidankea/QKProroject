@@ -286,7 +286,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
     }
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error{
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(nonnull NSError *)error{
     
     if (error && [self.delegate respondsToSelector:@selector(YPwebview:didLoadFailedWithError:)]) {
         [self.delegate YPwebview:self didLoadFailedWithError:error];

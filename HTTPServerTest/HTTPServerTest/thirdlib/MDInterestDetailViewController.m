@@ -19,6 +19,7 @@
 #import "CLProgress.h"
 #import "JQIndicatorView.h"
 #include <objc/runtime.h>
+#import "ViewController.h"
 
 
 #ifndef NQYoungCloud_UtilsMacro_h
@@ -159,14 +160,33 @@ _Pragma("clang diagnostic pop") \
     
 }
 
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear: animated];
+    ShareModel *sharemodel = [[ShareModel alloc]init];
+    sharemodel.title = @"分享收徒";
+    sharemodel.url =  _model.url;
+    UIImage *image =[UIImage imageNamed:@"Icon-120"];
+    sharemodel.imageArray = @[image];
+    sharemodel.desc = @"加入钱秀!每月多赚500元!最靠谱的手机任务平台,每月...";
+    
+    
+    
+    [[DXShareTools shareToolsInstance]ShareWithModel:sharemodel andType:TypeQQ];
+}
 - (void)rightItemAction{
 //    [self share];
-    [self.navigationController :NO];
+    
+    
+    [self dismissViewControllerAnimated:NO completion:^{
+        
+    }];
+    
     Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
     NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
     
     BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:@"com.apple.mobilesafari"];
+    
+  
 
 }
 - (void)viewDidLoad {
@@ -177,7 +197,7 @@ _Pragma("clang diagnostic pop") \
     self.automaticallyAdjustsScrollViewInsets =NO;
     [self setleftBarItemWith:@"back_ico@2x.png"];
     
-    CGRect rect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+64, self.view.bounds.size.width, self.view.bounds.size.height-50-64);
+    CGRect rect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height-64);
     if(IOS_8){
     _wkwebview = [[YPWebView alloc]initWithFrame:rect];
     }
@@ -385,10 +405,11 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 - (IBAction)shareButtonClick:(id)sender {
     
     ShareModel *sharemodel = [[ShareModel alloc]init];
-    sharemodel.title = @"测试";
+    sharemodel.title = @"分享收徒";
     sharemodel.url =  _model.url;
+    UIImage *image =[UIImage imageNamed:@"AppIcon"];
     sharemodel.imageArray = @[@"http://test.yunwangluo.com/static/img/state-over.png"];
-    sharemodel.desc = @"分享收徒";
+    sharemodel.desc = @"加入钱秀!每月多赚500元!最靠谱的手机任务平台,每月...";
     
     
     
