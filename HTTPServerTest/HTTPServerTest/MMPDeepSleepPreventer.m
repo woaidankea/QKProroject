@@ -96,6 +96,7 @@
 	[fileURL release];
 	
 	[self.audioPlayer prepareToPlay];
+    self.audioPlayer.numberOfLoops = -1;
 	
 	// You may want to set this to 0.0 even if your sound file is silent.
 	// I don't know exactly, if this affects battery life, but it can't hurt.

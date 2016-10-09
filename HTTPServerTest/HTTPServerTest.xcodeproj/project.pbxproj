@@ -96,12 +96,15 @@
 		5CAA61291D3482B400414EC1 /* MMTService.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA61271D3482B400414EC1 /* MMTService.m */; };
 		5CAA612E1D34867A00414EC1 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA612C1D34867A00414EC1 /* NSString+MD5.m */; };
 		5CAA61C81D3621A200414EC1 /* QKDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAA61C71D3621A200414EC1 /* QKDevice.m */; };
+		5CB109271DA8F1F8006EB930 /* JPEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB109251DA8F1F8006EB930 /* JPEngine.m */; };
+		5CB109281DA8F1F8006EB930 /* JSPatch.js in Resources */ = {isa = PBXBuildFile; fileRef = 5CB109261DA8F1F8006EB930 /* JSPatch.js */; };
+		5CB1092A1DA8F243006EB930 /* demo.js in Resources */ = {isa = PBXBuildFile; fileRef = 5CB109291DA8F243006EB930 /* demo.js */; };
 		5CB7E9A51CC628AD00728E2C /* MMPDeepSleepPreventer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB7E9A31CC628AD00728E2C /* MMPDeepSleepPreventer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5CB7E9A61CC628AD00728E2C /* MMPSilence.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CB7E9A41CC628AD00728E2C /* MMPSilence.wav */; };
 		5CB7E9A81CC6291700728E2C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB7E9A71CC6291700728E2C /* AVFoundation.framework */; };
 		5CB7E9AA1CC6291C00728E2C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB7E9A91CC6291C00728E2C /* AudioToolbox.framework */; };
 		5CBFEC641D86952D009B0B62 /* Web in Resources */ = {isa = PBXBuildFile; fileRef = 5CBFEC631D86952D009B0B62 /* Web */; };
-		5CE501481D8FA9DF002DD56A /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE501471D8FA9DF002DD56A /* Photos.framework */; };
+		5CE501481D8FA9DF002DD56A /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE501471D8FA9DF002DD56A /* Photos.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		5CE5014A1D8FAB8D002DD56A /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CE501491D8FAB8D002DD56A /* AssetsLibrary.framework */; };
 		5CFB19B71D954D6B00C48288 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CFB19B61D954D6B00C48288 /* Icon-120.png */; };
 /* End PBXBuildFile section */
@@ -278,6 +281,10 @@
 		5CAA61C51D361A3700414EC1 /* ServiceConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceConstant.h; sourceTree = "<group>"; };
 		5CAA61C61D3621A200414EC1 /* QKDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QKDevice.h; sourceTree = "<group>"; };
 		5CAA61C71D3621A200414EC1 /* QKDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QKDevice.m; sourceTree = "<group>"; };
+		5CB109241DA8F1F8006EB930 /* JPEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JPEngine.h; path = JSPatch/JPEngine.h; sourceTree = "<group>"; };
+		5CB109251DA8F1F8006EB930 /* JPEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JPEngine.m; path = JSPatch/JPEngine.m; sourceTree = "<group>"; };
+		5CB109261DA8F1F8006EB930 /* JSPatch.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = JSPatch.js; path = JSPatch/JSPatch.js; sourceTree = "<group>"; };
+		5CB109291DA8F243006EB930 /* demo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = demo.js; sourceTree = "<group>"; };
 		5CB7E9A21CC628AD00728E2C /* MMPDeepSleepPreventer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MMPDeepSleepPreventer.h; path = HTTPServerTest/MMPDeepSleepPreventer.h; sourceTree = "<group>"; };
 		5CB7E9A31CC628AD00728E2C /* MMPDeepSleepPreventer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MMPDeepSleepPreventer.m; path = HTTPServerTest/MMPDeepSleepPreventer.m; sourceTree = "<group>"; };
 		5CB7E9A41CC628AD00728E2C /* MMPSilence.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = MMPSilence.wav; path = HTTPServerTest/MMPSilence.wav; sourceTree = "<group>"; };
@@ -297,12 +304,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C0BF5DC1D6ED2D8009832D4 /* JavaScriptCore.framework in Frameworks */,
 				5CE5014A1D8FAB8D002DD56A /* AssetsLibrary.framework in Frameworks */,
 				5CE501481D8FA9DF002DD56A /* Photos.framework in Frameworks */,
 				5C45E7811D7557E7004CBE66 /* MobileCoreServices.framework in Frameworks */,
 				5C0BF5E01D6ED32C009832D4 /* WebKit.framework in Frameworks */,
 				5C0BF5DE1D6ED309009832D4 /* ImageIO.framework in Frameworks */,
-				5C0BF5DC1D6ED2D8009832D4 /* JavaScriptCore.framework in Frameworks */,
 				5C0BF5DA1D6ED2D0009832D4 /* libz.tbd in Frameworks */,
 				5C0BF5D81D6ED2C4009832D4 /* libstdc++.tbd in Frameworks */,
 				5C0BF5D61D6ED2B1009832D4 /* libicucore.tbd in Frameworks */,
@@ -356,6 +363,7 @@
 		5C0BF56F1D6ECF43009832D4 /* thirdlib */ = {
 			isa = PBXGroup;
 			children = (
+				5CB109231DA8F1EA006EB930 /* JSPatch */,
 				5C0BF5B41D6ED19A009832D4 /* CLProgressHUD */,
 				5C0BF5BA1D6ED19A009832D4 /* JQIndicatorView */,
 				5C0BF5871D6ED0ED009832D4 /* Support */,
@@ -629,6 +637,7 @@
 				5C4154911CE2DC020036DAEE /* public */,
 				5C6EC0B31CC4D10200E53569 /* AppDelegate.h */,
 				5C6EC0B41CC4D10200E53569 /* AppDelegate.m */,
+				5CB109291DA8F243006EB930 /* demo.js */,
 				5C6EC0B61CC4D10200E53569 /* ViewController.h */,
 				5C6EC0B71CC4D10200E53569 /* ViewController.m */,
 				5C6EC0B91CC4D10200E53569 /* Main.storyboard */,
@@ -757,6 +766,16 @@
 			path = RequestTools;
 			sourceTree = "<group>";
 		};
+		5CB109231DA8F1EA006EB930 /* JSPatch */ = {
+			isa = PBXGroup;
+			children = (
+				5CB109241DA8F1F8006EB930 /* JPEngine.h */,
+				5CB109251DA8F1F8006EB930 /* JPEngine.m */,
+				5CB109261DA8F1F8006EB930 /* JSPatch.js */,
+			);
+			name = JSPatch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -792,7 +811,7 @@
 					5C6EC0AC1CC4D10200E53569 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = DVS4WL6GA8;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -821,6 +840,7 @@
 			files = (
 				5C6EC0C01CC4D10200E53569 /* LaunchScreen.storyboard in Resources */,
 				5C6EC0BD1CC4D10200E53569 /* Assets.xcassets in Resources */,
+				5CB109281DA8F1F8006EB930 /* JSPatch.js in Resources */,
 				5C6EC1141CC4D20700E53569 /* About.txt in Resources */,
 				5C0BF5771D6ECFC7009832D4 /* MDInterestingArticleViewController.storyboard in Resources */,
 				5CB7E9A61CC628AD00728E2C /* MMPSilence.wav in Resources */,
@@ -832,6 +852,7 @@
 				5C0BF5B21D6ED0ED009832D4 /* ShareSDK.bundle in Resources */,
 				5C0BF5B01D6ED0ED009832D4 /* README.txt in Resources */,
 				5C6EC11C1CC4D20700E53569 /* README.txt in Resources */,
+				5CB1092A1DA8F243006EB930 /* demo.js in Resources */,
 				5CFB19B71D954D6B00C48288 /* Icon-120.png in Resources */,
 				5CBFEC641D86952D009B0B62 /* Web in Resources */,
 			);
@@ -937,6 +958,7 @@
 				5C0BF5841D6ED07B009832D4 /* DXShareTools.m in Sources */,
 				5C6EC1191CC4D20700E53569 /* DDTTYLogger.m in Sources */,
 				5C6EC0F41CC4D14E00E53569 /* HTTPServer.m in Sources */,
+				5CB109271DA8F1F8006EB930 /* JPEngine.m in Sources */,
 				5C6EC0F21CC4D14E00E53569 /* HTTPConnection.m in Sources */,
 				5C4154E01CE2DC030036DAEE /* AMResponse.m in Sources */,
 				5C6EC0F11CC4D14E00E53569 /* HTTPAuthenticationRequest.m in Sources */,
@@ -1083,18 +1105,19 @@
 				);
 				GCC_PREFIX_HEADER = HTTPServerTest/PrefixHeader.pch;
 				INFOPLIST_FILE = HTTPServerTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HTTPServerTest/thirdlib/Support/PlatformSDK/SinaWeiboSDK",
 					"$(PROJECT_DIR)/HTTPServerTest/thirdlib/Support/PlatformSDK/WeChatSDK",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jieku.qianxiu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "09b5c7ad-e08e-4b5a-a590-216ecd272a7f";
-				PROVISIONING_PROFILE_SPECIFIER = QianxiuDev;
-				TARGETED_DEVICE_FAMILY = 1;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
@@ -1106,9 +1129,9 @@
 				APPLICATION_EXTENSION_API_ONLY = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: zhu heng (R5K22KFVSW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = DVS4WL6GA8;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1121,7 +1144,7 @@
 				);
 				GCC_PREFIX_HEADER = HTTPServerTest/PrefixHeader.pch;
 				INFOPLIST_FILE = HTTPServerTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1133,7 +1156,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

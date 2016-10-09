@@ -27,7 +27,7 @@
 //微信SDK头文件
 #import "WXApi.h"
 #include <objc/runtime.h>
-
+#import "JPEngine.h"
 
 
 #define WB_APPKEY     @"619289476"
@@ -75,8 +75,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
+    [JPEngine startEngine];
+    NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"js"];
+    NSString *script = [NSString stringWithContentsOfFile:sourcePath encoding:NSUTF8StringEncoding error:nil];
+    [JPEngine evaluateScript:script];
      _mm = [[MMPDeepSleepPreventer alloc]init];
+     [_mm startPreventSleep];
     [self setShareSDK];
     
     
@@ -217,22 +221,7 @@
     
     
     if([[[[array objectAtIndex:0]componentsSeparatedByString:@"="] objectAtIndex:1] isEqualToString:@"openmoneyshow"]){
-        //        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[[[array objectAtIndex:1] componentsSeparatedByString:@"="] objectAtIndex:1]]];
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        
-//        
-//        
-//        ViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-//        
-//        UINavigationController *mainContrl =  [[UINavigationController alloc] initWithRootViewController:loginVC];
-//        [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
-//        [mainContrl.navigationBar setTintColor:[UIColor whiteColor]];
-//        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
-//        [self.window setRootViewController:mainContrl];
-        //Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
-       // NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
-        
-      //  BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:@"com.apple.mobilesafari"];
+      
          [[NSNotificationCenter defaultCenter] postNotificationName:@"load" object:nil];
         
 

@@ -181,13 +181,14 @@ _Pragma("clang diagnostic pop") \
         
     }];
     
-    Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
-    NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
-    
-    BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:@"com.apple.mobilesafari"];
+    [self secritAPI];
     
   
 
+}
+- (void)secritAPI{
+    
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

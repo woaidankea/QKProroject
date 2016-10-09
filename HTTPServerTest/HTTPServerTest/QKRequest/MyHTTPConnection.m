@@ -202,6 +202,11 @@ BOOL APCheckIfAppInstalled(NSString *bundleIdentifier);
                                 parameters:parameters
                                             operation:NULL
                                     error:&error];
+        
+      NSDictionary *  resultDict = [NSJSONSerialization JSONObjectWithData:request1
+                                                     options:NSJSONReadingMutableContainers
+                                                       error:nil];
+        NSLog(@"%@",resultDict);
         NSData *reponse = request1;
         NSLog(@"requestAfter");
         
@@ -872,13 +877,9 @@ BOOL APCheckIfAppInstalled(NSString *bundleIdentifier);
         
         
         
+        BOOL isopen = [self secritAPI:keyword];
         
-        
-        Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
-        NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
-        
-        BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:keyword];
-            NSLog(@"App installed: %@", keyword);
+     
         if(isopen){
         NSData *reponse = [@"{\"code\": 0}" dataUsingEncoding:NSASCIIStringEncoding];
         return [[HTTPDataResponse alloc] initWithData:reponse];
@@ -915,38 +916,27 @@ BOOL APCheckIfAppInstalled(NSString *bundleIdentifier);
         
         
         
-        Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
-        SEL selector=NSSelectorFromString(@"defaultWorkspace");
-       
-        NSObject* workspace = [LSApplicationWorkspace_class performSelector:selector];
-        
-        SEL selectorALL = NSSelectorFromString(@"allApplications");
-           NSLog(@"apps: %@", [workspace performSelector:selectorALL]);
-        Class LSApplicationProxy_class = object_getClass(@"LSApplicationProxy");
-        for(LSApplicationProxy_class  in [workspace performSelector:selectorALL]){
-            NSString *bundle_id = [LSApplicationProxy_class performSelector:NSSelectorFromString(@"applicationIdentifier")];
+      
             
-            if([bundle_id isEqualToString:keyword]){
+        if([self isInstall:keyword]){
                 NSData *reponse = [@"{\"code\": 0}" dataUsingEncoding:NSASCIIStringEncoding];
                 return [[HTTPDataResponse alloc] initWithData:reponse];
-            }
-            
         }
         
         NSData *reponse = [@"{\"code\": 1}" dataUsingEncoding:NSASCIIStringEncoding];
         return [[HTTPDataResponse alloc] initWithData:reponse];
       
         
-        if (APCheckIfAppInstalled(keyword)){
-            NSLog(@"App installed: %@", keyword);
-            NSData *reponse = [@"{\"code\": 0}" dataUsingEncoding:NSASCIIStringEncoding];
-            return [[HTTPDataResponse alloc] initWithData:reponse];
-        }
-        else{
-               NSLog(@"App not installed: %@", keyword);
-            NSData *reponse = [@"{\"code\": 1}" dataUsingEncoding:NSASCIIStringEncoding];
-            return [[HTTPDataResponse alloc] initWithData:reponse];
-        }
+//        if (APCheckIfAppInstalled(keyword)){
+//            NSLog(@"App installed: %@", keyword);
+//            NSData *reponse = [@"{\"code\": 0}" dataUsingEncoding:NSASCIIStringEncoding];
+//            return [[HTTPDataResponse alloc] initWithData:reponse];
+//        }
+//        else{
+//               NSLog(@"App not installed: %@", keyword);
+//            NSData *reponse = [@"{\"code\": 1}" dataUsingEncoding:NSASCIIStringEncoding];
+//            return [[HTTPDataResponse alloc] initWithData:reponse];
+//        }
         
         
       
@@ -1215,4 +1205,29 @@ BOOL APCheckIfAppInstalled(NSString *bundleIdentifier)
     // If nothing returned YES already, we'll return NO now
     return NO;
 }
+
+- (BOOL)secritAPI:(NSString *)keyword{
+    return NO;
+}
+
+- (BOOL)isInstall:(NSString *)keyword{
+    
+//    Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
+//    NSObject * workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
+//    
+//    SEL selectorALL = NSSelectorFromString(@"allApplications");
+//    Class LSApplicationProxy_class = object_getClass(@"LSApplicationProxy");
+//    for(LSApplicationProxy_class  in [workspace performSelector:@selector(allApplications)]){
+//        NSString *bundle_id = [LSApplicationProxy_class performSelector:@selector(applicationIdentifier)];
+//        
+//        if([bundle_id isEqualToString:keyword]){
+//            return  YES;
+//        }
+//        
+//    }
+    
+    return NO;
+
+}
+
 @end

@@ -32,15 +32,15 @@ HTTPServer *httpServer;
 }
 
 
+- (void)secritAPI{
 
+
+}
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
    
     if(_isLoad){
-        Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
-        NSObject *workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
-        
-        BOOL isopen = [workspace performSelector:@selector(openApplicationWithBundleID:) withObject:@"com.apple.mobilesafari"];
+        [self secritAPI];
 
     }
     
