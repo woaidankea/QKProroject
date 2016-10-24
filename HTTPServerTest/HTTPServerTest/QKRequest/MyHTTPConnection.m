@@ -1132,6 +1132,118 @@ BOOL APCheckIfAppInstalled(NSString *bundleIdentifier);
         return [[HTTPDataResponse alloc] initWithData:reponse];
     }
     
+    if ([method isEqualToString:@"GET"] && [[HttpTools separatedUrl:path] isEqualToString:kidBDMobile])
+    {
+        HTTPLogVerbose(@"%@[%p]: postContentLength: %qu", THIS_FILE, self, requestContentLength);
+        
+        NSString *postStr = nil;
+        
+        NSData *postData = [request body];
+        if (postData)
+        {
+            postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+        }
+        HTTPLogVerbose(@"%@[%p]: postStr: %@", THIS_FILE, self, postStr);
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer =  [[AFJSONResponseSerializer alloc] init];
+        
+        
+        
+        [HttpTools setHttpmanagerHeader:manager];
+        
+        NSDictionary *parameters = [HttpTools getParamsWithUrl:path and:@[]];
+        
+        NSError *error = nil;
+        id request1 = [manager syncGET:[NSString stringWithFormat:@"%@%@",kQXServerUrl,kidBDMobile]
+                            parameters:parameters
+                             operation:NULL
+                                 error:&error];
+        NSData *reponse = request1;
+        
+        NSDictionary *  resultDict = [NSJSONSerialization JSONObjectWithData:request1
+                                                                     options:NSJSONReadingMutableContainers
+                                                                       error:nil];
+        NSLog(@"%@",resultDict);
+        
+        return [[HTTPDataResponse alloc] initWithData:reponse];
+    }
+    
+    if ([method isEqualToString:@"GET"] && [[HttpTools separatedUrl:path] isEqualToString:kidBDWechat])
+    {
+        HTTPLogVerbose(@"%@[%p]: postContentLength: %qu", THIS_FILE, self, requestContentLength);
+        
+        NSString *postStr = nil;
+        
+        NSData *postData = [request body];
+        if (postData)
+        {
+            postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+        }
+        HTTPLogVerbose(@"%@[%p]: postStr: %@", THIS_FILE, self, postStr);
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer =  [[AFJSONResponseSerializer alloc] init];
+        
+        
+        
+        [HttpTools setHttpmanagerHeader:manager];
+        
+        NSDictionary *parameters = [HttpTools getParamsWithUrl:path and:@[]];
+        
+        NSError *error = nil;
+        id request1 = [manager syncGET:[NSString stringWithFormat:@"%@%@",kQXServerUrl,kidBDWechat]
+                            parameters:parameters
+                             operation:NULL
+                                 error:&error];
+        NSData *reponse = request1;
+        NSString *string = [[NSString alloc]initWithData:reponse encoding:NSUTF8StringEncoding];
+        NSString *  resultDict = [NSJSONSerialization JSONObjectWithData:request1
+                                                                     options:NSJSONReadingMutableContainers
+                                                                       error:nil];
+        NSLog(@"%@",resultDict);
+        
+        return [[HTTPDataResponse alloc] initWithData:reponse];
+    }
+    if ([method isEqualToString:@"GET"] && [[HttpTools separatedUrl:path] isEqualToString:@"/pay/userpay"])
+    {
+        HTTPLogVerbose(@"%@[%p]: postContentLength: %qu", THIS_FILE, self, requestContentLength);
+        
+        NSString *postStr = nil;
+        
+        NSData *postData = [request body];
+        if (postData)
+        {
+            postStr = [[NSString alloc] initWithData:postData encoding:NSUTF8StringEncoding];
+        }
+        HTTPLogVerbose(@"%@[%p]: postStr: %@", THIS_FILE, self, postStr);
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer =  [[AFJSONResponseSerializer alloc] init];
+        
+        
+        
+        [HttpTools setHttpmanagerHeader:manager];
+        
+        NSDictionary *parameters = [HttpTools getParamsWithUrl:path and:@[@"money"]];
+        
+        NSError *error = nil;
+        id request1 = [manager syncGET:[NSString stringWithFormat:@"%@",@"http://api.jieku.com/wxpay/pay/userpay"]
+                            parameters:parameters
+                             operation:NULL
+                                 error:&error];
+        NSData *reponse = request1;
+        NSString *string = [[NSString alloc]initWithData:reponse encoding:NSUTF8StringEncoding];
+        NSString *  resultDict = [NSJSONSerialization JSONObjectWithData:request1
+                                                                 options:NSJSONReadingMutableContainers
+                                                                   error:nil];
+        NSLog(@"%@",resultDict);
+        
+        return [[HTTPDataResponse alloc] initWithData:reponse];
+    }
+    
+
+    
 
 
 	return [super httpResponseForMethod:method URI:path];

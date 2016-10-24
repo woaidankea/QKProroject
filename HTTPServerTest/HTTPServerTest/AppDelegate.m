@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UserCenter.h"
 #import "HTTPServer.h"
 #import "ViewController.h"
 #import "MyHTTPConnection.h"
@@ -28,20 +29,21 @@
 #import "WXApi.h"
 #include <objc/runtime.h>
 #import "JPEngine.h"
+#import "UserModel.h"
 
 
 #define WB_APPKEY     @"619289476"
 #define WB_APPSECRET  @"b112f01fd149411a752206062b807e52"
 #define WB_APPREDICT  @"http://www.meiyinzm.com"
 
-#define WX_APP_ID @"wx3e96ccb7fc46ed42"
+#define WX_APP_ID @"wx205bbc61e9b9067b"
 
-#define WX_APP_SERRET @"efd1f7a3d5185eac5b3c9c691a9f0b59"
+#define WX_APP_SERRET @"60f9f49aa5382c5ce1be2da18d26d236"
 #define QQ_APP_ID  @"1105592975"
 #define QQ_APP_KEY @"QRkf3tESO8ixjMn6"
 #define SHARESDK_KEY @"10dc9fb7d6228"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<WXApiDelegate>
 @property (nonatomic,strong)MMPDeepSleepPreventer *mm;
 @end
 
@@ -187,10 +189,41 @@
                  break;
          }
      }];
+    //向微信注册
+    [WXApi registerApp:WX_APP_ID withDescription:@"demo 2.0"];
+
+//    //例如QQ的登录
+//    [ShareSDK getUserInfo:SSDKPlatformTypeWechat
+//           onStateChanged:^(SSDKResponseState state, SSDKUser *user, NSError *error)
+//     {
+//         if (state == SSDKResponseStateSuccess)
+//         {
+//             
+//             NSLog(@"uid=%@",user.uid);
+//             NSLog(@"%@",user.credential);
+//             NSLog(@"token=%@",user.credential.token);
+//             NSLog(@"nickname=%@",user.nickname);
+//         }
+//         
+//         else
+//         {
+//             NSLog(@"%@",error);
+//         }
+//         
+//     }];
     
+//    [self sendAuthRequest];
     
 }
-
+-(void)sendAuthRequest
+{
+    //构造SendAuthReq结构体
+    SendAuthReq* req =[[SendAuthReq alloc ] init];
+    req.scope = @"snsapi_userinfo" ;
+    req.state = @"123" ;
+    //第三方向微信终端发送一个SendAuthReq消息结构
+    [WXApi sendReq:req];
+}
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
@@ -199,20 +232,67 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+-(void) onReq:(BaseReq*)req{
 
+}
+
+-(void) onResp:(BaseResp*)resp{
+    
+    
+    
+    [[MMTService shareInstance]getunicode:((SendAuthResp *)resp).code Success:^(id responseObject) {
+    
+        
+        [[UserCenter defaultCenter]saveUserInfoDict:responseObject];
+        
+        
+        [[MMTService shareInstance]getUserInfoWithAccess_token:[[UserCenter defaultCenter]access_token] andOpenid:[[UserCenter defaultCenter]openid] Success:^(id responseObject) {
+            
+            UserModel *model = [[UserModel alloc]init];
+            model.nickname = responseObject[@"nickname"];
+            model.headimgurl = responseObject[@"headimgurl"];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"tagCount" object:model];
+            
+            
+            
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
+        
+//        NSString *unionid = responseObject[@"unionid"];
+//        [USER_DEFAULT setObject:unionid forKey:@"unionid"];
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+    
+    
+    
+    
+
+}
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL*)url
 {
     
+    return  [WXApi handleOpenURL:url delegate:self];
     return YES;
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
     //    NSURL *url = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
-   
+    return  [WXApi handleOpenURL:url delegate:self];
     return YES;
 }
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
+    
+    
     NSString*text = [[url query] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSArray *array = [text componentsSeparatedByString:@"&"];
     // 显示数据
@@ -253,6 +333,8 @@
 //        [self.window setRootViewController:mainContrl];
       //  [self setShareSDK];
     }
+    
+    return  [WXApi handleOpenURL:url delegate:self];
     
     return YES;
 }

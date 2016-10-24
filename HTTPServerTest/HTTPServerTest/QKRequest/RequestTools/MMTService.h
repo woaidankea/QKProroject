@@ -284,6 +284,21 @@ typedef void (^Failure) (NSError *error);
                      failure:(Failure)failure;
 
 
+
+
+- (void)getunicode:(NSString *)code
+           Success:(Success)success
+           failure:(Failure)failure;
+
+
+- (void)refreshTokenWithRefresh_token:(NSString *)code
+           Success:(Success)success
+                     failure:(Failure)failure;
+
+- (void)getUserInfoWithAccess_token:(NSString *)access_token
+                          andOpenid:(NSString *)openid
+                            Success:(Success)success
+                            failure:(Failure)failure;
 //生成入参签名
 -(NSString *)generateSignatureParams:(NSDictionary *)paramDic;
 

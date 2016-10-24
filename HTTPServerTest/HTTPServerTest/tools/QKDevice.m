@@ -20,6 +20,9 @@
 #import <sys/ioctl.h>
 #import <arpa/inet.h>
 #import "NSString+MD5.h"
+#import "UserCenter.h"
+#import "SvUDIDTools.h"
+#import "PDKeyChain.h"
 #define POST_VALUE(_VAL)  (_VAL)?(_VAL):@""
 @implementation QKDevice
 +(NSDictionary *)systemInfoData{
@@ -27,12 +30,33 @@
     
     NSString *qx_version = [NSString stringWithFormat:@"%@|%@|%@",[UIDevice currentDevice].systemVersion, [[NSBundle mainBundle] bundleIdentifier],[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
     
-     NSString *qx_scheme = @"qkapp";
+    NSString *qx_scheme = @"qkapp";
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval a=[dat timeIntervalSince1970];
     NSString *timeString = [NSString stringWithFormat:@"%f",a];//转为字符型
     NSString *qx_datetime = [timeString substringWithRange:NSMakeRange(0,10)];
-    NSString *qx_auth = [NSString stringWithFormat:@"%@|%@",[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString],[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
+    
+    
+    NSString *idfa = [[ASIdentifierManager sharedManager] advertisingIdentifier].UUIDString;
+    
+    if([idfa isEqualToString:@"00000000-0000-0000-0000-000000000000"]){
+        idfa = @"";
+    }
+    // test
+    NSString *uuid = [NSString new];
+    if (![PDKeyChain keyChainLoad]) {
+        NSLog(@"keyChain load fail");
+        [PDKeyChain keyChainSave:[[NSUUID UUID]UUIDString]];
+        
+        uuid = [PDKeyChain keyChainLoad];
+        NSLog(@"keyChain save success");
+    }else {
+        uuid = [PDKeyChain keyChainLoad];
+        NSLog(@"keyChainLoad: %@ ",[PDKeyChain keyChainLoad]);
+    }
+
+    
+    NSString *qx_auth = [NSString stringWithFormat:@"%@|%@|%@",idfa,uuid,[[UserCenter defaultCenter]unionid]];
     
     [dict setObject:qx_version forKey:@"qxversion"];
     [dict setObject:qx_scheme forKey:@"qxscheme"];

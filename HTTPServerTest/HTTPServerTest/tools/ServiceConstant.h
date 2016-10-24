@@ -45,7 +45,9 @@
 #define kAppInfo             @"/keyServices/app.getInfo"    //判断是否安装应用
 #define kAppOpen             @"/keyServices/app.openApp"    //判断是否安装应用
 
+#define kidBDMobile          @"/user/isbdmobile"
 
+#define kidBDWechat          @"/user/isbdwechat"
 
 
 
