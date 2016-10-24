@@ -30,7 +30,9 @@
 #include <objc/runtime.h>
 #import "JPEngine.h"
 #import "UserModel.h"
-
+#import "FYBarController.h"
+#import "FYPlayManager.h"
+#import <UMMobClick/MobClick.h>//友盟统计
 
 #define WB_APPKEY     @"619289476"
 #define WB_APPSECRET  @"b112f01fd149411a752206062b807e52"
@@ -87,7 +89,8 @@
     
     
     
-    
+    self.window.rootViewController = [[FYBarController alloc] init];
+
     
     
     
