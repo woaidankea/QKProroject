@@ -87,5 +87,5 @@
 
 - (void)startPreventSleep;
 - (void)stopPreventSleep;
-+ (MMPDeepSleepPreventer *)sharedSingleton;
+
 @end

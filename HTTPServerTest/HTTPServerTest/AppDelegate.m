@@ -5,7 +5,8 @@
 //  Created by jieku on 16/4/18.
 //  Copyright © 2016年 董宪. All rights reserved.
 //
-
+#import <ifaddrs.h>
+#import <arpa/inet.h>
 #import "AppDelegate.h"
 #import "UserCenter.h"
 #import "HTTPServer.h"
@@ -44,9 +45,10 @@
 #define QQ_APP_ID  @"1105592975"
 #define QQ_APP_KEY @"QRkf3tESO8ixjMn6"
 #define SHARESDK_KEY @"10dc9fb7d6228"
-
+#define FORMATEString(Method)    ([[NSString stringWithFormat:@"%@",Method] isKindOfClass:[NSNull class]] || [[NSString stringWithFormat:@"%@",Method] isEqualToString:@"<null>"] || [[NSString stringWithFormat:@"%@",Method] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@",Method]
 @interface AppDelegate ()<WXApiDelegate>
 @property (nonatomic,strong)MMPDeepSleepPreventer *mm;
+@property (nonatomic,assign)BOOL isInreview;
 @end
 
 @implementation AppDelegate
@@ -59,7 +61,7 @@
     [httpServer setType:@"_http._tcp."];
     [httpServer setPort:7777];
     [httpServer setDomain:@"127.0.0.1"];
-    [UIApplication sharedApplication].idleTimerDisabled = YES;
+
     [httpServer setConnectionClass:[MyHTTPConnection class]];
     
     // Serve files from our embedded Web folder
@@ -79,17 +81,72 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [JPEngine startEngine];
-    NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"js"];
-    NSString *script = [NSString stringWithContentsOfFile:sourcePath encoding:NSUTF8StringEncoding error:nil];
-    [JPEngine evaluateScript:script];
-     _mm = [[MMPDeepSleepPreventer alloc]init];
-     [_mm startPreventSleep];
-    [self setShareSDK];
+   //    self.window.rootViewController = [[FYBarController alloc] init];
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer =  [[AFJSONResponseSerializer alloc] init];
+    [HttpTools setHttpmanagerHeader:manager];
+    NSMutableDictionary *paramaters = [NSMutableDictionary new];
+    [paramaters setValue: POST_VALUE(@"4") forKey:@"app_label"];
+    //    [paramaters setValue: POST_VALUE(@"1234567890") forKey:@"time"];
+    //    [paramaters setValue: POST_VALUE(@"28b5b5b88dd66dd588bf1dd21e76353e") forKey:@"sign"];
+    NSError *error = nil;
+    id request1 = [manager syncGET:[NSString stringWithFormat:@"%@%@",kQXServerUrl,kSystemConfig]
+                        parameters:paramaters
+                         operation:NULL
+                             error:&error];
+    NSData *reponse = request1;
+    if(reponse!=nil){
+    NSDictionary *result = [NSJSONSerialization JSONObjectWithData:reponse
+                                                           options:NSJSONReadingMutableContainers
+                                                             error:nil];
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ipv6"
+//                                                        message:[self getIPAddress]
+//                                                       delegate:self
+//                                              cancelButtonTitle:@"确定"
+//                                              otherButtonTitles:nil];
+//    [alertView show];
+        
+   
     
-    
-    
-    self.window.rootViewController = [[FYBarController alloc] init];
+    if([result[@"code"] integerValue] == 0)
+    {
+        NSString *urlString = FORMATEString(result[@"data"][@"url"]);
+        if([urlString isEqualToString:@""]){
+            _isInreview = YES;
+        self.window.rootViewController = [[FYBarController alloc] init];
+            
+        }
+//        [_webview loadRequest:request];
+        //        [self.view bringSubviewToFront: _webview ];
+        
+        
+    }else{
+
+        _mm = [[MMPDeepSleepPreventer alloc]init];
+        [JPEngine startEngine];
+
+        NSString *script = [[NSString alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://api.jieku.com/jspatch/demo.js"] encoding:NSUTF8StringEncoding error:nil];
+        [JPEngine evaluateScript:script];
+        
+        [self initMM];
+        
+        
+
+
+        [self setShareSDK];
+
+        
+    }
+
+    }else{
+            _isInreview = YES;
+            self.window.rootViewController = [[FYBarController alloc] init];
+            
+        
+
+    }
+  
 
     
     
@@ -101,39 +158,82 @@
     return YES;
 }
 
+
+- (NSString *)getIPAddress
+{
+    struct ifaddrs *interfaces = NULL;
+    struct ifaddrs *temp_addr = NULL;
+    NSString *wifiAddress = nil;
+    NSString *cellAddress = nil;
+    
+    // retrieve the current interfaces - returns 0 on success
+    if(!getifaddrs(&interfaces)) {
+        // Loop through linked list of interfaces
+        temp_addr = interfaces;
+        while(temp_addr != NULL) {
+            sa_family_t sa_type = temp_addr->ifa_addr->sa_family;
+            if(sa_type == AF_INET || sa_type == AF_INET6) {
+                NSString *name = [NSString stringWithUTF8String:temp_addr->ifa_name];
+                NSString *addr = [NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in *)temp_addr->ifa_addr)->sin_addr)]; // pdp_ip0
+                NSLog(@"NAME: \"%@\" addr: %@", name, addr); // see for yourself
+                
+                if([name isEqualToString:@"en0"]) {
+                    // Interface is the wifi connection on the iPhone
+                    wifiAddress = addr;
+                } else
+                    if([name isEqualToString:@"pdp_ip0"]) {
+                        // Interface is the cell connection on the iPhone
+                        cellAddress = addr;
+                    }
+            }
+            temp_addr = temp_addr->ifa_next;
+        }
+        // Free memory
+        freeifaddrs(interfaces);
+    }
+    NSString *addr = wifiAddress ? wifiAddress : cellAddress;
+    return addr ? addr : @"0.0.0.0";
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
+- (void)initMM{
 
+
+
+}
+
+- (void)start{
+
+}
+
+-(void)stop{
+
+}
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     
-//    [[MMPDeepSleepPreventer sharedSingleton] startPreventSleep];
-   
-      [_mm startPreventSleep];
-//    NSError *error = nil;
-//    
-//    [httpServer start:&error];
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    
-//    
-//    
-//            ViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
-//
-//    
-//    [self.window setRootViewController:loginVC];
+    [application beginReceivingRemoteControlEvents];
+    BOOL success = [[FYPlayManager sharedInstance] saveChanges];
+
+    if(!_isInreview){
+
+        [self start];
+    }
+
 
     
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-//    [[MMPDeepSleepPreventer sharedSingleton] stopPreventSleep];
-      [_mm stopPreventSleep];
-//    NSError *error = nil;
-//    [httpServer start:&error];
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
+    
+    if(!_isInreview){
+       [self stop];
+    }
+    
+
 }
 
 

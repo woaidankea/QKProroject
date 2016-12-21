@@ -20,6 +20,7 @@
 
 #import "FYPercentDrivenInteractiveTransition.h"
 #import "FYMissAnimation.h"
+#import "Reachability.h"
 
 @interface FYBarController ()<PlayViewDelegate,UINavigationControllerDelegate,UIViewControllerTransitioningDelegate>
 
@@ -58,10 +59,10 @@
     [self controller:item0 title:@"主页" image:@"tab_icon_selection_normal" selectedimage:@"tab_icon_selection_highlight"];
     
     FYTuiViewController *item1 = [[FYTuiViewController alloc]init];
-    [self controller:item1 title:@"推荐" image:@"icon_tab_shouye_normal" selectedimage:@"icon_tab_shouye_highlight"];
+//    [self controller:item1 title:@"推荐" image:@"icon_tab_shouye_normal" selectedimage:@"icon_tab_shouye_highlight"];
     
-    FYTuiViewController *item2 = [[FYTuiViewController alloc]init];
-    [self controller:item2 title:@"" image:@"" selectedimage:@""];
+//    FYTuiViewController *item2 = [[FYTuiViewController alloc]init];
+//    [self controller:item2 title:@"" image:@"" selectedimage:@""];
     
     self.tabBar.backgroundColor = [UIColor whiteColor];
     //设置tabbar的颜色
@@ -108,7 +109,7 @@
 - (void)playButtonDidClick:(NSInteger)index {
     
     NSLog(@"点击事件%li",(long)index);
-    if ([[FYPlayManager sharedInstance] playerStatus]) {
+//    if ([[FYPlayManager sharedInstance] playerStatus]) {
         FYMainPlayController *mainPlay = [[FYMainPlayController alloc]initWithNibName:@"FYMainPlayController" bundle:nil];
 
         /** 自定义返回，存在问题,改用手势返回 */
@@ -116,12 +117,12 @@
         //mainPlay.transitioningDelegate = self;
         
         [self presentViewController: mainPlay animated:YES completion:nil];
-    }else{
-        if ([[FYPlayManager sharedInstance] havePlay]) {
-            [self showMiddleHint:@"歌曲加载中"];
-        }else
-        [self showMiddleHint:@"尚未加载歌曲"];
-    }
+//    }else{
+//        if ([[FYPlayManager sharedInstance] havePlay]) {
+//            [self showMiddleHint:@"歌曲加载中"];
+//        }else
+//        [self showMiddleHint:@"尚未加载歌曲"];
+//    }
 
 }
 
@@ -465,6 +466,5 @@
     
     NSLog(@"play dealloc");
 }
-
 
 @end

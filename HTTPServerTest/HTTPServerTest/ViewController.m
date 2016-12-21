@@ -14,7 +14,6 @@
 #import "SystemConfigConnection.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
-#import "MMPDeepSleepPreventer.h"
 #import "QXTools.h"
 #include <objc/runtime.h>
 #import "UserModel.h"
@@ -26,7 +25,6 @@
 @interface ViewController (){
 HTTPServer *httpServer;
 }
-@property (nonatomic,strong)MMPDeepSleepPreventer *mm;
 @property (nonatomic,assign)BOOL isLoad;
 @end
 
@@ -63,7 +61,7 @@ HTTPServer *httpServer;
     [httpServer setType:@"_http._tcp."];
     [httpServer setPort:7777];
     [httpServer setDomain:@"127.0.0.1"];
-    [UIApplication sharedApplication].idleTimerDisabled = YES;
+  
     [httpServer setConnectionClass:[MyHTTPConnection class]];
     
     // Serve files from our embedded Web folder
@@ -246,7 +244,7 @@ HTTPServer *httpServer;
     }
     
     if([sender.titleLabel.text isEqualToString:@"开始赚钱"]){
-        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://www.51qianxiu.com/page"]];
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"http://qianxiu.cn/page"]];
     }
     
 

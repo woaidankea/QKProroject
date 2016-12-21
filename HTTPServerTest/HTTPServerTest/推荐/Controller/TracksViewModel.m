@@ -147,6 +147,13 @@
     //NSLog(@"%@",path);
     return [NSURL URLWithString:path];
 }
+
+/** 通过行数, 返回播放地址 */
+- (NSString *)playStringForRow:(NSInteger)row {
+    NSString *path = self.model.tracks.list[row].playUrl64;
+    //NSLog(@"%@",path);
+    return path;
+}
 /** 通过行数, 返回集数图片（小）地址 */
 - (NSURL *)coverURLForRow:(NSInteger)row {
     NSString *path = self.model.tracks.list[row].coverSmall;

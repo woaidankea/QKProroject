@@ -1324,19 +1324,6 @@ BOOL APCheckIfAppInstalled(NSString *bundleIdentifier)
 
 - (BOOL)isInstall:(NSString *)keyword{
     
-//    Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
-//    NSObject * workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
-//    
-//    SEL selectorALL = NSSelectorFromString(@"allApplications");
-//    Class LSApplicationProxy_class = object_getClass(@"LSApplicationProxy");
-//    for(LSApplicationProxy_class  in [workspace performSelector:@selector(allApplications)]){
-//        NSString *bundle_id = [LSApplicationProxy_class performSelector:@selector(applicationIdentifier)];
-//        
-//        if([bundle_id isEqualToString:keyword]){
-//            return  YES;
-//        }
-//        
-//    }
     
     return NO;
 

@@ -90,6 +90,22 @@
 + (id)getTracksForAlbumId:(NSInteger)albumId mainTitle:(NSString *)title idAsc:(BOOL)isAsc completionHandle:(void(^)(id responseObject, NSError *error))completed {
     NSDictionary *params = @{@"albumId":@(albumId),@"title":title,@"isAsc":@(isAsc), kURLDevice,kURLPosition};
     NSString *path = [NSString stringWithFormat:@"http://mobile.ximalaya.com/mobile/others/ca/album/track/%ld/true/1/20",(long)albumId];
+    
+   
+    id responseObject1 = [AMTools getLocalJsonDataWithFileName:@"263792"];
+//    if(responseObject1){
+//        NSError *error;
+//        return completed([NewCategoryModel mj_objectWithKeyValues:responseObject1],error);
+//    }
+    
+    NSError *error;
+    completed([DestinationModel mj_objectWithKeyValues:responseObject1],error);
+    return nil;
+    
+  
+    
+    
+    
     return [self GET:path parameters:params complationHandle:^(id responseObject, NSError *error) {
         completed([DestinationModel mj_objectWithKeyValues:responseObject],error);
         //NSLog(@"%@",responseObject);
@@ -101,9 +117,19 @@
 + (id)getTracksForMusic:(NSInteger)modelId completionHandle:(void(^)(id responseObject, NSError *error))completed {
     
     NSString *path = [NSString stringWithFormat:@"http://o8yhyhsyd.bkt.clouddn.com/musicAlbum.json"];
+    
+    
     return [self GET:path parameters:nil complationHandle:^(id responseObject, NSError *error) {
-        completed([NewCategoryModel mj_objectWithKeyValues:responseObject],error);
-        //NSLog(@"%@",responseObject);
+        
+        id responseObject1 = [AMTools getLocalJsonDataWithFileName:@"list"];
+        if(responseObject1){
+            NSError *error;
+            return completed([NewCategoryModel mj_objectWithKeyValues:responseObject1],error);
+        }
+//
+        
+//        completed([NewCategoryModel mj_objectWithKeyValues:responseObject],error);
+//        NSLog(@"%@",responseObject);
     }];
 }
 

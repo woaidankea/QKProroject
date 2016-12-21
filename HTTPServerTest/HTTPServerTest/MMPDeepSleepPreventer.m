@@ -65,18 +65,6 @@
 #pragma mark -
 #pragma mark Creation and Destruction
 
-+ (MMPDeepSleepPreventer *)sharedSingleton
-{
-    static MMPDeepSleepPreventer * _sharedSingleton = nil;
-    @synchronized([MMPDeepSleepPreventer class]){
-        if (_sharedSingleton == nil) {
-            _sharedSingleton =[[MMPDeepSleepPreventer alloc] init];
-        }
-    }
-    return _sharedSingleton;
-}
-
-
 - (id)init
 {
 	if ( !(self = [super init]) )
@@ -85,10 +73,26 @@
 	[self mmp_setUpAudioSession];
 	
 	// Set up path to sound file
-	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"MMPSilence"
-	                                                          ofType:@"wav"];
-	
-	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
+    
+    NSString *urlStr = @"http://d.yunwangluo.com/ting/gequ/%E4%BA%91%E9%9C%84%E6%AE%BF.wav";
+    NSURL *url = [[NSURL alloc]initWithString:urlStr];
+    NSData * audioData = [NSData dataWithContentsOfURL:url];
+    
+    //将数据保存到本地指定位置
+    NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@.wav", docDirPath , @"temp"];
+    [audioData writeToFile:filePath atomically:YES];
+    
+    //播放本地音乐
+    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+//    player = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+//    [player play];
+    
+//    
+//	NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"MMPSilence"
+//	                                                          ofType:@"wav"];
+//	
+//	NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
 	
 	// Set up audio player with sound file
 	audioPlayer_ = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL
@@ -96,11 +100,8 @@
 	[fileURL release];
 	
 	[self.audioPlayer prepareToPlay];
-    self.audioPlayer.numberOfLoops = -1;
 	
-	// You may want to set this to 0.0 even if your sound file is silent.
-	// I don't know exactly, if this affects battery life, but it can't hurt.
-	[self.audioPlayer setVolume:0.0];
+
 	
     return self;
 }
@@ -153,7 +154,6 @@
 
 - (void)mmp_playPreventSleepSound
 {
-    NSLog(@"PALY");
 	[self.audioPlayer play];
 }
 

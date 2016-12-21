@@ -15,7 +15,10 @@
 
 #include <sys/types.h>
 #include <sys/sysctl.h>
-
+#import "TracksViewModel.h"
+#import "FYMoreNetManager.h"
+#import "DestinationModel.h"
+#import "FYPlayManager.h"
 @interface FYPlayManager ()
 
 @property (nonatomic) FYPlayerCycle  cycle;
@@ -348,8 +351,15 @@ NSString *itemArchivePath(){
     _indexPathRow = indexPathRow;
 
     //缓存播放实现，可自行查找AVAssetResourceLoader资料,或采用AudioQueue实现
-    NSURL *musicURL = [self.tracksVM playURLForRow:_indexPathRow];
-    _currentPlayerItem = [AVPlayerItem playerItemWithURL:musicURL];
+//    NSURL *musicURL = [self.tracksVM playURLForRow:_indexPathRow];
+    NSString *audioPath = [[NSBundle mainBundle] pathForResource:[self.tracksVM playStringForRow:_indexPathRow] ofType:@"mp3"];
+    NSURL *audioUrl = [NSURL fileURLWithPath:audioPath];
+    _currentPlayerItem = [AVPlayerItem playerItemWithURL:audioUrl];
+    
+   
+    NSError *playerError;
+//    _player = [[AVPlayer alloc]initWithURL:audioUrl];
+    
     _player = [[AVPlayer alloc] initWithPlayerItem:_currentPlayerItem];
 
     [self addMusicTimeMake];
@@ -562,8 +572,9 @@ NSString *itemArchivePath(){
             _indexPathRow = _rowNumber-1;
         }
 
-        NSURL *musicURL = [self.tracksVM playURLForRow:_indexPathRow];
-        _currentPlayerItem = [AVPlayerItem playerItemWithURL:musicURL];
+        NSString *audioPath = [[NSBundle mainBundle] pathForResource:[self.tracksVM playStringForRow:_indexPathRow] ofType:@"mp3"];
+        NSURL *audioUrl = [NSURL fileURLWithPath:audioPath];
+        _currentPlayerItem = [AVPlayerItem playerItemWithURL:audioUrl];
         
         //[_player replaceCurrentItemWithPlayerItem:_currentPlayerItem];
         _player = [[AVPlayer alloc] initWithPlayerItem:_currentPlayerItem];
@@ -592,8 +603,9 @@ NSString *itemArchivePath(){
             _indexPathRow = 0;
         }
         
-        NSURL *musicURL = [self.tracksVM playURLForRow:_indexPathRow];
-        _currentPlayerItem = [AVPlayerItem playerItemWithURL:musicURL];
+        NSString *audioPath = [[NSBundle mainBundle] pathForResource:[self.tracksVM playStringForRow:_indexPathRow] ofType:@"mp3"];
+        NSURL *audioUrl = [NSURL fileURLWithPath:audioPath];
+        _currentPlayerItem = [AVPlayerItem playerItemWithURL:audioUrl];
         
         //[_player replaceCurrentItemWithPlayerItem:_currentPlayerItem];
         _player = [[AVPlayer alloc] initWithPlayerItem:_currentPlayerItem];
@@ -615,8 +627,9 @@ NSString *itemArchivePath(){
         
         _indexPathRow = random()%_rowNumber;
         
-        NSURL *musicURL = [self.tracksVM playURLForRow:_indexPathRow];
-        _currentPlayerItem = [AVPlayerItem playerItemWithURL:musicURL];
+        NSString *audioPath = [[NSBundle mainBundle] pathForResource:[self.tracksVM playStringForRow:_indexPathRow] ofType:@"mp3"];
+        NSURL *audioUrl = [NSURL fileURLWithPath:audioPath];
+        _currentPlayerItem = [AVPlayerItem playerItemWithURL:audioUrl];
         
         //[_player replaceCurrentItemWithPlayerItem:_currentPlayerItem];
         _player = [[AVPlayer alloc] initWithPlayerItem:_currentPlayerItem];

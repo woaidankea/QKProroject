@@ -7,7 +7,7 @@
 //
 
 #import "FYMainTableViewCell.h"
-
+#import "QXTools.h"
 @interface FYMainTableViewCell ()
 
 @property (nonatomic , strong) UIButton *playButton;
@@ -114,6 +114,12 @@
 
 -(void)clickButtontap:(UIButton *)sender{
     
+    if(![AMTools isExistenceNetwork]){
+        [QXTools showAlertViewWithTitle:@"没有网络" cancelButtonTitle:@"OK"];
+        return;
+        
+    }
+
     self.isPlay = YES;
     NSInteger tag = (NSInteger)sender.tag + _tagInt;
     [self.delegate mainTableViewDidClick:tag];

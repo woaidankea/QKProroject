@@ -641,21 +641,21 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
             
             
         }else if(indexPath.section == 4){
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"关于竹影音乐" message:@"本应用旨在技术分享，请勿用于商业用途" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {}];
-            
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"关于竹影音乐" message:@"本应用旨在技术分享，请勿用于商业用途" preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault
+//                                                                  handler:^(UIAlertAction * action) {}];
+//            
+//            [alert addAction:defaultAction];
+//            [self presentViewController:alert animated:YES completion:nil];
         }else if(indexPath.section == 5){
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"开发者" message:@"寿煜宇\n联系邮箱：438239428@qq.com" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {
-                                                                      
-                                                                  }];
-            
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
+//            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"开发者" message:@"寿煜宇\n联系邮箱：438239428@qq.com" preferredStyle:UIAlertControllerStyleAlert];
+//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault
+//                                                                  handler:^(UIAlertAction * action) {
+//                                                                      
+//                                                                  }];
+//            
+//            [alert addAction:defaultAction];
+//            [self presentViewController:alert animated:YES completion:nil];
         }
 
     }else if(tableView.tag == 101){

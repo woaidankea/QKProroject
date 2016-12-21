@@ -51,7 +51,7 @@
 - (NSInteger )albumIdForRow:(NSInteger)row;
 /** 返回总歌曲数 */
 - (NSInteger )trackRow;
-
+- (NSString *)playStringForRow:(NSInteger)row;
 /** 返回专辑标题 */
 @property (nonatomic,strong) NSString *albumTitle;
 /** 返回专辑播放次数 */

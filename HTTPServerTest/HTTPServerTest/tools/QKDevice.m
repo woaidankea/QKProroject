@@ -23,6 +23,7 @@
 #import "UserCenter.h"
 #import "SvUDIDTools.h"
 #import "PDKeyChain.h"
+#import <AdSupport/AdSupport.h>
 #define POST_VALUE(_VAL)  (_VAL)?(_VAL):@""
 @implementation QKDevice
 +(NSDictionary *)systemInfoData{

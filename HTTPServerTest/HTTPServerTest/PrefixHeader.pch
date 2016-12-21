@@ -54,6 +54,7 @@
 #import "MBProgressHUD+HR.h"
 
 #import "UIImageView+WebCache.h"
+#import "AMTools.h"
 
 
 #endif /* PrefixHeader_pch */

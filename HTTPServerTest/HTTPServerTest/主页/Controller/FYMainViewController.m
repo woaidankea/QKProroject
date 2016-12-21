@@ -17,7 +17,7 @@
 #import "FYMainTableViewCell.h"
 
 #import "FYPlayManager.h"
-
+#import "QXTools.h"
 #define showLeftViewMaxWidth 10 //拖拽距离
 #define maxWidth 240 //宽
 
@@ -76,7 +76,7 @@
     
     UILabel *navTitle = [[UILabel alloc] initWithFrame:CGRectMake(view.frame.size.width/2-40, 0, 80, 44)];
 
-    navTitle.text = @"竹影音乐";
+    navTitle.text = @"钱秀音乐";
     navTitle.font = [UIFont fontWithName:@".SFUIText-Semibold" size:18];
     
     [view addSubview:navTitle];
@@ -171,6 +171,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 - (void)mainTableViewDidClick:(NSInteger)tag{
     
+    
+  
+    
+    
     if (tag >= 2000) {
         NSInteger tableTag = tag - 2000;
         NSInteger oldtableTag = _tableInteger;
@@ -200,7 +204,14 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
                     //专辑
                     userInfo[@"theSong"] = tracksVM;
                     
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"StartPlay" object:nil userInfo:[userInfo copy]];
+                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"StartPlay" object:nil userInfo:[userInfo copy]];
+                    
+                        
+                    
+                    
+                    
+                    
+                   
                 }];
             }
             
