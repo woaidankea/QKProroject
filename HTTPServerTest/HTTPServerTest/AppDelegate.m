@@ -48,6 +48,8 @@
 @interface AppDelegate ()<WXApiDelegate>
 
 @property (nonatomic,assign)BOOL isInreview;
+@property (nonatomic,strong)AVAudioSession *session;
+@property (nonatomic,strong)AVAudioPlayer *player;
 @end
 
 @implementation AppDelegate
@@ -440,4 +442,36 @@
     
     return YES;
 }
+
+- (void)playbackgroud
+{
+    /*
+     这里是随便添加得一首音乐。
+     真正的工程应该是添加一个尽可能小的音乐。。。
+     0～1秒的
+     没有声音的。
+     循环播放就行。
+     这个只是保证后台一直运行该软件。
+     使得该软件一直处于活跃状态.
+     你想操作的东西该在哪里操作就在哪里操作。
+     */
+    _session = [AVAudioSession sharedInstance];
+    /*打开应用会关闭别的播放器音乐*/
+    //    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    /*打开应用不影响别的播放器音乐*/
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
+    [_session setActive:YES error:nil];
+    //设置代理 可以处理电话打进时中断音乐播放
+    
+    [_session setDelegate:self];
+    
+    NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"Baby One More Time" ofType:@"mp3"];
+    NSURL *URLPath = [[NSURL alloc] initFileURLWithPath:musicPath];
+    _player = [[AVAudioPlayer alloc] initWithContentsOfURL:URLPath error:nil];
+    [_player prepareToPlay];
+    [_player setDelegate:self];
+    _player.numberOfLoops = -1;
+    [_player play];
+}
+
 @end
