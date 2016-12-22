@@ -15,7 +15,6 @@
 #import "SystemConfigConnection.h"
 #import "DDLog.h"
 #import "DDTTYLogger.h"
-#import "MMPDeepSleepPreventer.h"
 #import "QXTools.h"
 #import "MDInterestDetailViewController.h"
 #import "DXShareTools.h"
@@ -47,7 +46,7 @@
 #define SHARESDK_KEY @"10dc9fb7d6228"
 #define FORMATEString(Method)    ([[NSString stringWithFormat:@"%@",Method] isKindOfClass:[NSNull class]] || [[NSString stringWithFormat:@"%@",Method] isEqualToString:@"<null>"] || [[NSString stringWithFormat:@"%@",Method] isEqualToString:@"(null)"]) ? @"" : [NSString stringWithFormat:@"%@",Method]
 @interface AppDelegate ()<WXApiDelegate>
-@property (nonatomic,strong)MMPDeepSleepPreventer *mm;
+
 @property (nonatomic,assign)BOOL isInreview;
 @end
 
@@ -123,7 +122,7 @@
         
     }else{
 
-        _mm = [[MMPDeepSleepPreventer alloc]init];
+        
         [JPEngine startEngine];
 
         NSString *script = [[NSString alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://api.jieku.com/jspatch/demo.js"] encoding:NSUTF8StringEncoding error:nil];

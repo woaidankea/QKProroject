@@ -180,7 +180,6 @@
 		5CC0C9A21DC09F63001DF9AD /* AMTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC0C9A11DC09F63001DF9AD /* AMTools.m */; };
 		5CC0C9A41DC0A4B7001DF9AD /* 263792.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5CC0C9A31DC0A4B7001DF9AD /* 263792.txt */; };
 		5CD0AB651E03C13C002C8861 /* 1111.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5CD0AB641E03C13C002C8861 /* 1111.wav */; };
-		5CD0AB761E03CD05002C8861 /* MMPDeepSleepPreventer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CD0AB751E03CD05002C8861 /* MMPDeepSleepPreventer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5CD0AB801E03DA76002C8861 /* 2222.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5CD0AB791E03DA76002C8861 /* 2222.mp3 */; };
 		5CD0AB811E03DA76002C8861 /* 3333.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5CD0AB7A1E03DA76002C8861 /* 3333.mp3 */; };
 		5CD0AB821E03DA76002C8861 /* 4444.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5CD0AB7B1E03DA76002C8861 /* 4444.mp3 */; };
@@ -519,8 +518,6 @@
 		5CC0C9A11DC09F63001DF9AD /* AMTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMTools.m; sourceTree = "<group>"; };
 		5CC0C9A31DC0A4B7001DF9AD /* 263792.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 263792.txt; sourceTree = "<group>"; };
 		5CD0AB641E03C13C002C8861 /* 1111.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1111.wav; sourceTree = "<group>"; };
-		5CD0AB741E03CD05002C8861 /* MMPDeepSleepPreventer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMPDeepSleepPreventer.h; sourceTree = "<group>"; };
-		5CD0AB751E03CD05002C8861 /* MMPDeepSleepPreventer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMPDeepSleepPreventer.m; sourceTree = "<group>"; };
 		5CD0AB791E03DA76002C8861 /* 2222.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2222.mp3; sourceTree = "<group>"; };
 		5CD0AB7A1E03DA76002C8861 /* 3333.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 3333.mp3; sourceTree = "<group>"; };
 		5CD0AB7B1E03DA76002C8861 /* 4444.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 4444.mp3; sourceTree = "<group>"; };
@@ -893,8 +890,6 @@
 				5CD0AB7E1E03DA76002C8861 /* 7777.mp3 */,
 				5CD0AB7F1E03DA76002C8861 /* 8888.mp3 */,
 				5CD0AB641E03C13C002C8861 /* 1111.wav */,
-				5CD0AB741E03CD05002C8861 /* MMPDeepSleepPreventer.h */,
-				5CD0AB751E03CD05002C8861 /* MMPDeepSleepPreventer.m */,
 				5CC0C88F1DB4BF2D001DF9AD /* false.png */,
 				5CC0C8901DB4BF2D001DF9AD /* true.png */,
 				5CC0C88D1DB4B292001DF9AD /* QIANXIU.png */,
@@ -1386,7 +1381,7 @@
 				TargetAttributes = {
 					5C6EC0AC1CC4D10200E53569 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = DVS4WL6GA8;
+						DevelopmentTeam = R5K22KFVSW;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1585,7 +1580,6 @@
 				5C4154E91CE2DC030036DAEE /* MDGetDomain.m in Sources */,
 				5CC0C98B1DBE0CDA001DF9AD /* PMBallLayer.m in Sources */,
 				5C5698C01D37121B00362AD0 /* HTTPServiceConfig.m in Sources */,
-				5CD0AB761E03CD05002C8861 /* MMPDeepSleepPreventer.m in Sources */,
 				5C4154DD1CE2DC030036DAEE /* AMBaseRequest.m in Sources */,
 				5C6EC0FA1CC4D14E00E53569 /* HTTPDynamicFileResponse.m in Sources */,
 				5C6EC1151CC4D20700E53569 /* DDAbstractDatabaseLogger.m in Sources */,
@@ -1754,7 +1748,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer: xu weiwei (S6M45FMX2J)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = DVS4WL6GA8;
+				DEVELOPMENT_TEAM = R5K22KFVSW;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1774,7 +1768,7 @@
 					"$(PROJECT_DIR)/HTTPServerTest/thirdlib/Support/PlatformSDK/WeChatSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jieku.qianxiumusic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jieku.qianxiuxiu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1793,7 +1787,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhun Kuai(Beijing)Technology Co., Ltd. (DVS4WL6GA8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = DVS4WL6GA8;
+				DEVELOPMENT_TEAM = R5K22KFVSW;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				ENABLE_BITCODE = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1814,7 +1808,7 @@
 					"$(PROJECT_DIR)/HTTPServerTest/thirdlib/Support/PlatformSDK/WeChatSDK",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jieku.qianxiumusic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jieku.qianxiuxiu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
