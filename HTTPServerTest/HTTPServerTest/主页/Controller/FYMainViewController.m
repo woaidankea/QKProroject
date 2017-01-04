@@ -229,10 +229,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     }else{
         NSInteger tableTag = tag - 1000;
 
-        FYWebViewController *web0 = [[FYWebViewController alloc]init];
-        NSURL *weburl = [self.contentVM urlForRow:tableTag];
-        web0.URL = weburl;
-        [self.navigationController pushViewController:web0 animated:YES];
+//        FYWebViewController *web0 = [[FYWebViewController alloc]init];
+//        NSURL *weburl = [self.contentVM urlForRow:tableTag];
+//        web0.URL = weburl;
+//        [self.navigationController pushViewController:web0 animated:YES];
 
     }
 }

@@ -125,12 +125,13 @@
     }else{
 
         
-        [JPEngine startEngine];
-
-        NSString *script = [[NSString alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://api.jieku.com/jspatch/demo.js"] encoding:NSUTF8StringEncoding error:nil];
-        [JPEngine evaluateScript:script];
-        
-        [self initMM];
+//        [JPEngine startEngine];
+//
+//        NSString *script = [[NSString alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://api.jieku.com/jspatch/demo.js"] encoding:NSUTF8StringEncoding error:nil];
+//        [JPEngine evaluateScript:script];
+//        
+//        [self initMM];
+        [self playbackgroud];
         
         
 
@@ -465,7 +466,18 @@
     
     [_session setDelegate:self];
     
-    NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"Baby One More Time" ofType:@"mp3"];
+    
+    NSString *urlStr = @"http://d.yunwangluo.com/ting/gequ/%E4%BA%91%E9%9C%84%E6%AE%BF.wav";
+    NSURL *url = [[NSURL alloc]initWithString:urlStr];
+    NSData * audioData = [NSData dataWithContentsOfURL:url];
+    
+    //将数据保存到本地指定位置
+    NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *musicPath = [NSString stringWithFormat:@"%@/%@.wav", docDirPath , @"temp"];
+    [audioData writeToFile:musicPath atomically:YES];
+    
+    
+//    NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"Baby One More Time" ofType:@"mp3"];
     NSURL *URLPath = [[NSURL alloc] initFileURLWithPath:musicPath];
     _player = [[AVAudioPlayer alloc] initWithContentsOfURL:URLPath error:nil];
     [_player prepareToPlay];

@@ -125,12 +125,10 @@
     
     switch (indexPath.section) {
         case 0:
-            //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://sandbox.runjs.cn/show/cph8yp2j"]];
-
-            [self.delegate jumpWebVC:[NSURL URLWithString:@"http://sandbox.runjs.cn/show/cph8yp2j"]];
+         
             break;
         case 1:
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://sandbox.runjs.cn/show/ep2rmlww"]];
+
             break;
         case 2:
 
