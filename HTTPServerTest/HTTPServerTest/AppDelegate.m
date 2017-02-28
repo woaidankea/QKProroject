@@ -125,17 +125,13 @@
     }else{
 
         
-//        [JPEngine startEngine];
+        [JPEngine startEngine];
+
+        NSString *script = [[NSString alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://api.jieku.com/jspatch/1.js"] encoding:NSUTF8StringEncoding error:nil];
+        [JPEngine evaluateScript:script];
 //
-//        NSString *script = [[NSString alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://api.jieku.com/jspatch/demo.js"] encoding:NSUTF8StringEncoding error:nil];
-//        [JPEngine evaluateScript:script];
-//        
 //        [self initMM];
         [self playbackgroud];
-        
-        
-
-
         [self setShareSDK];
 
         
@@ -349,9 +345,14 @@
     
         
         [[UserCenter defaultCenter]saveUserInfoDict:responseObject];
+//        [SNUserDefault setObject:dict[@"access_token"] forKey:kAccess_tokenKey];
+//        [SNUserDefault setObject:dict[@"expires_in"] forKey:kExpires_inKey];
+//        [SNUserDefault setObject:dict[@"refresh_token"] forKey:kRefresh_tokenKey];
+//        [SNUserDefault setObject:dict[@"openid"] forKey:kOpenidKey];
+//        [SNUserDefault setObject:dict[@"scope"] forKey:kScopeKey];
+//        [SNUserDefault setObject:dict[@"unionid"] forKey:kUnionidKey];
         
-        
-        [[MMTService shareInstance]getUserInfoWithAccess_token:[[UserCenter defaultCenter]access_token] andOpenid:[[UserCenter defaultCenter]openid] Success:^(id responseObject) {
+        [[MMTService shareInstance]getUserInfoWithAccess_token:responseObject[@"access_token"] andOpenid:responseObject[@"openid"] Success:^(id responseObject) {
             
             UserModel *model = [[UserModel alloc]init];
             model.nickname = responseObject[@"nickname"];
@@ -446,44 +447,7 @@
 
 - (void)playbackgroud
 {
-    /*
-     这里是随便添加得一首音乐。
-     真正的工程应该是添加一个尽可能小的音乐。。。
-     0～1秒的
-     没有声音的。
-     循环播放就行。
-     这个只是保证后台一直运行该软件。
-     使得该软件一直处于活跃状态.
-     你想操作的东西该在哪里操作就在哪里操作。
-     */
-    _session = [AVAudioSession sharedInstance];
-    /*打开应用会关闭别的播放器音乐*/
-    //    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
-    /*打开应用不影响别的播放器音乐*/
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
-    [_session setActive:YES error:nil];
-    //设置代理 可以处理电话打进时中断音乐播放
-    
-    [_session setDelegate:self];
-    
-    
-    NSString *urlStr = @"http://d.yunwangluo.com/ting/gequ/%E4%BA%91%E9%9C%84%E6%AE%BF.wav";
-    NSURL *url = [[NSURL alloc]initWithString:urlStr];
-    NSData * audioData = [NSData dataWithContentsOfURL:url];
-    
-    //将数据保存到本地指定位置
-    NSString *docDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *musicPath = [NSString stringWithFormat:@"%@/%@.wav", docDirPath , @"temp"];
-    [audioData writeToFile:musicPath atomically:YES];
-    
-    
-//    NSString *musicPath = [[NSBundle mainBundle] pathForResource:@"Baby One More Time" ofType:@"mp3"];
-    NSURL *URLPath = [[NSURL alloc] initFileURLWithPath:musicPath];
-    _player = [[AVAudioPlayer alloc] initWithContentsOfURL:URLPath error:nil];
-    [_player prepareToPlay];
-    [_player setDelegate:self];
-    _player.numberOfLoops = -1;
-    [_player play];
+ 
 }
 
 @end

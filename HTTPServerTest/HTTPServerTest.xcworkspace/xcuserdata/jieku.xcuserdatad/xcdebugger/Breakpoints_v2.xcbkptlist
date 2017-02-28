@@ -74,7 +74,7 @@
                   moduleName = "HTTPServerTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/QKProject/HTTPServerTest/HTTPServerTest/thirdlib/MDInterestDetailViewController.m"
-                  timestampString = "503565354.259737"
+                  timestampString = "505452268.44109"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "180"
@@ -89,7 +89,7 @@
                   moduleName = "HTTPServerTest"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jieku/QKProject/HTTPServerTest/HTTPServerTest/thirdlib/MDInterestDetailViewController.m"
-                  timestampString = "503565354.261144"
+                  timestampString = "505452268.446908"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "182"
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HTTPServerTest/AppDelegate.m"
-            timestampString = "504071360.860388"
+            timestampString = "505455288.127899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "372"
+            endingLineNumber = "372"
             landmarkName = "-onResp:"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HTTPServerTest/AppDelegate.m"
-            timestampString = "504071360.860388"
+            timestampString = "505455288.127899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "379"
-            endingLineNumber = "379"
+            startingLineNumber = "375"
+            endingLineNumber = "375"
             landmarkName = "-onResp:"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HTTPServerTest/AppDelegate.m"
-            timestampString = "504071360.860388"
+            timestampString = "505455288.127899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
             landmarkName = "-application:handleOpenURL:"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,13 +266,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HTTPServerTest/AppDelegate.m"
-            timestampString = "504071360.860388"
+            timestampString = "505455288.127899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
             landmarkName = "-onResp:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__22-[AppDelegate onResp:]_block_invoke_2"
+                  moduleName = "HTTPServerTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieku/QKProject/HTTPServerTest/HTTPServerTest/AppDelegate.m"
+                  timestampString = "505452268.623504"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "359"
+                  endingLineNumber = "359"
+                  offsetFromSymbolStart = "428">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__22-[AppDelegate onResp:]_block_invoke_3"
+                  moduleName = "HTTPServerTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieku/QKProject/HTTPServerTest/HTTPServerTest/AppDelegate.m"
+                  timestampString = "505452268.63652"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "361"
+                  endingLineNumber = "361"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -330,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HTTPServerTest/AppDelegate.m"
-            timestampString = "504071360.860388"
+            timestampString = "505455288.127899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "-getIPAddress"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,13 +378,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HTTPServerTest/AppDelegate.m"
-            timestampString = "504071360.860388"
+            timestampString = "505455288.127899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AppDelegate application:didFinishLaunchingWithOptions:]"
+                  moduleName = "HTTPServerTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieku/QKProject/HTTPServerTest/HTTPServerTest/AppDelegate.m"
+                  timestampString = "505452268.690938"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "2256">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AppDelegate application:didFinishLaunchingWithOptions:]"
+                  moduleName = "HTTPServerTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieku/QKProject/HTTPServerTest/HTTPServerTest/AppDelegate.m"
+                  timestampString = "505452268.694681"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "138"
+                  endingLineNumber = "138"
+                  offsetFromSymbolStart = "2268">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -426,11 +490,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HTTPServerTest/AppDelegate.m"
-            timestampString = "504071360.860388"
+            timestampString = "505455288.127899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "-start"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +506,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HTTPServerTest/AppDelegate.m"
-            timestampString = "504071360.860388"
+            timestampString = "505455288.127899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "209"
+            endingLineNumber = "209"
             landmarkName = "-stop"
             landmarkType = "7">
          </BreakpointContent>
@@ -522,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HTTPServerTest/&#x901a;&#x7528;/View/FYPlayManager.m"
-            timestampString = "503564385.079712"
+            timestampString = "505452427.223826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
             landmarkName = "-playWithModel:indexPathRow:"
             landmarkType = "7">
          </BreakpointContent>
@@ -537,93 +601,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HTTPServerTest/&#x63a8;&#x8350;/Controller/TracksViewModel.m"
-            timestampString = "503564827.792223"
+            filePath = "HTTPServerTest/&#x901a;&#x7528;/View/FYPlayManager.m"
+            timestampString = "505452632.175419"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "-playStringForRow:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HTTPServerTest/&#x63a8;&#x8350;/Controller/TracksViewModel.m"
-            timestampString = "503564859.624147"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "-playURLForRow:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HTTPServerTest/&#x63a8;&#x8350;/Controller/TracksViewModel.m"
-            timestampString = "503565056.639058"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-getDataCompletionHandle:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HTTPServerTest/&#x901a;&#x7528;/NetManager/FYMoreNetManager.m"
-            timestampString = "503565132.394567"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "+getTracksForAlbumId:mainTitle:idAsc:completionHandle:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/MJExtension/MJExtension/NSObject+MJKeyValue.m"
-            timestampString = "503565179.152897"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
-            landmarkName = "+mj_objectWithKeyValues:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HTTPServerTest/tools/AMTools.m"
-            timestampString = "503565191.495656"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "+getLocalJsonDataWithFileName:"
+            startingLineNumber = "365"
+            endingLineNumber = "365"
+            landmarkName = "-playWithModel:indexPathRow:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
